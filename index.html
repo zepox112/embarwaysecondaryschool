@@ -70,6 +70,39 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Hii ni muhimu kwa ajili ya simu */
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 300px;
+            /* Hii inahakikisha kadi haziwi nyembamba sana */
+            max-width: 400px;
+        }
+
+        .border-blue {
+            border-top: 5px solid #3498db;
+        }
+
+        .button-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Inahakikisha kwenye simu kila box linachukua upana wote */
+        @media (max-width: 768px) {
+            .box {
+                min-width: 100%;
+            }
+        }
+
         /* NAVIGATION */
         nav {
             display: flex;
@@ -518,9 +551,10 @@
         </div>
         <ul>
             <li><a href="#nyumbani">Home</a></li>
-            <li><a href="#taaluma">Matokeo</a></li>
-            <li><a href="#usajili">Usajili</a></li>
+            <li><a href="#taaluma">Taaluma</a></li>
+            <li><a href="#Matokeo">Matokeo</a></li>
             <li><a href="#kalenda">Ratiba</a></li>
+            <li><a href="#usajili">Usajili</a></li>
             <li><a href="#mawasiliano">Mawasiliano</a></li>
         </ul>
     </nav>
@@ -612,7 +646,7 @@
                 <p>Tuna Maktaba ya kisasa na Maabara tatu za Sayansi zilizosheheni vifaa vya kutosha.</p>
             </div>
             <div class="grid">
-                <h2 class="section-title">Taarifa za Taaluma & Matokeo</h2>
+                <h2 class="section-title">Matokeo ya Mitihani ya shule</h2>
 
                 <div class="glass-card"
                     style="flex: 1; min-width: 320px; text-align: center; border-top: 5px solid #ffcc00; background: rgba(255, 204, 0, 0.03);">
@@ -634,8 +668,8 @@
 
             </div>
     </section>
-    <section id="taaluma">
-        <h2 class="section-title">Matokeo ya Mitihani (NECTA)</h2>
+    <section id="Matokeo">
+        <h2 class="section-title">Matokeo ya Mitihani Ya kitaifa</h2>
 
         <div
             style="display: flex; flex-direction: row; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%;">
@@ -672,7 +706,16 @@
                     </a>
                 </div>
             </div>
-
+            <div class="glass-card box border-blue">
+                <h3 style="color: #3498db;">MOCK 2025</h3>
+                <p class="box-subtitle">Matokeo ya Majaribio ya Mkoa/Kanda</p>
+                <div class="button-stack">
+                    <a href="https://mock.famnet.co.tz/results/view/SS664f3889f358a_NC_136?v=1770032456" target="_blank"
+                        class="btn btn-download">Mock Kidato cha Nne</a>
+                    <a href="https://drive.google.com/file/d/1lv31sSma0JkkRveXu3lbDm_2-WI26IKo/view" target="_blank"
+                        class="btn btn-download">Mock Kidato cha Sita</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -797,7 +840,7 @@
             <div class="glass-card">
                 <h3>Ofisi Yetu</h3>
                 <p>📍 TANZANIA, ARUSHA,NGORONGORO</p>
-                <p>📞 +255 755 990 912 MKUU WA SHULE</p> 
+                <p>📞 +255 755 990 912 MKUU WA SHULE</p>
                 <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
                 <p>📞 +255 755 702 037 MWL MALEZI</p>
                 <p>✉️ info@embarwaysec.ac.tz</p>
