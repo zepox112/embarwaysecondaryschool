@@ -358,6 +358,10 @@
             border-left: 4px solid #3498db;
         }
 
+        .updates-bar:hover .updates-content {
+            animation-play-state: paused;
+        }
+
         .calendar-table {
             width: 100%;
             border-collapse: collapse;
@@ -551,6 +555,7 @@
         </div>
         <ul>
             <li><a href="#nyumbani">Home</a></li>
+            <li><a href="#updates">Updates</a></li>
             <li><a href="#taaluma">Taaluma</a></li>
             <li><a href="#Matokeo">Matokeo</a></li>
             <li><a href="#kalenda">Ratiba</a></li>
@@ -582,366 +587,496 @@
             <a href="#usajili" class="btn">Usajili</a>
         </div>
     </header>
-
-    <div class="quick-links">
-        <div class="glass-card">
-            <h3>Habari za Hivi Punde</h3>
-            <p>📢 Matokeo ya Kidato cha nne 2025 yapo tayari.</p>
-        </div>
-        <div class="glass-card" style="text-align: center; margin-top: 20px;">
-            <h3>Matokeo ya Mtihani wa kidato cha nne 2025</h3>
-            <p>Bonyeza kitufe hapa chini kutazama matokeo ya hivi punde ya Kidato cha Nne 2025.</p>
-            <br>
-            <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
-                class="btn-matokeo">
-                📊 Fungua Matokeo ya 2025
-            </a>
-        </div>
-        <div class="glass-card">
-            <h3>Neno la Mkuu</h3>
-            <p>"Tunajivunia kutoa elimu bora inayomwandaa mwanafunzi kifikra na kimaadili."</p>
-        </div>
-    </div>
-
-    <section id="kuhusu">
-        <h2 class="section-title">Kuhusu Sisi</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <h3>Historia Yetu</h3>
-                <p>Ilianzishwa mwaka 2000 ikiwa na lengo la kuwahudumia watoto wa jamii ya wafugaji na Waishio
-                    Ngorongoro,
-                    ikichochewa na mazingira ya kipekee ya Ngorongoro.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Dira na Dhima</h3>
-                <p><strong>Dira:</strong> Kuwa kitovu cha ubora wa elimu kanda ya kaskazini.<br>
-                    <strong>Dhima:</strong> Kutoa mafunzo bora ya kitaaluma na stadi za maisha.
-                </p>
-            </div>
-            <div class="glass-card">
-                <h3>Mazingira</h3>
-                <p>Shule ipo Ngorongoro - Endulen. Tunafurahia hali ya hewa ya ubaridi na ukaribu na maliasili za nchi
-                    yetu.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="taaluma">
-        <h2 class="section-title">Taaluma</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <h3>Mitaala</h3>
-                <p>Tunatoa mchepuo wa Sayansi, Sanaa na Biashara kwa O-Level na A-Level.</p>
-            </div>
-            <div class="glass-card">
-                <h3>(Combinations)</h3>
-                <div class="combos">
-                    <span class="badge">HGL</span> <span class="badge">HGK</span>
-                    <span class="badge">HGE</span> <span class="badge">HGLi</span>
-                    <span class="badge">CBG</span> <span class="badge">HKL</span>
-                </div>
-            </div>
-            <div class="glass-card">
-                <h3>Vifaa vya Kujifunzia</h3>
-                <p>Tuna Maktaba ya kisasa na Maabara tatu za Sayansi zilizosheheni vifaa vya kutosha.</p>
-            </div>
-            <div class="grid">
-                <h2 class="section-title">Matokeo ya Mitihani ya shule</h2>
-
-                <div class="glass-card"
-                    style="flex: 1; min-width: 320px; text-align: center; border-top: 5px solid #ffcc00; background: rgba(255, 204, 0, 0.03);">
-                    <h3 style="color: #ffcc00; margin-bottom: 5px;">Mitihani ya Shule</h3>
-                    <p style="font-size: 0.8rem; margin-bottom: 15px; opacity: 0.8;">Matokeo ya Muhula/Mwisho wa
-                        Mwaka</p>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <a href="#" class="btn-internal">Form 1 - View</a>
-                        <a href="#" class="btn-internal">Form 2 - View</a>
-                        <a href="#" class="btn-internal">Form 3 - View</a>
-                        <a href="#" class="btn-internal">Form 4 - View</a>
-                        <a href="#" class="btn-internal">Form 5 - View</a>
-                        <a href="#" class="btn-internal">Form 6 - View</a>
-                    </div>
-                    <p style="font-size: 0.7rem; margin-top: 12px; color: #ffcc00;">*Haya ni matokeo ya ndani ya
-                        shule (Shule ya sekondary Embarway)</p>
-                </div>
-
-            </div>
-    </section>
-    <section id="Matokeo">
-        <h2 class="section-title">Matokeo ya Mitihani Ya kitaifa</h2>
-
-        <div
-            style="display: flex; flex-direction: row; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%;">
-
-            <div class="glass-card"
-                style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid var(--accent-green);">
-                <h3 style="color: var(--accent-green); margin-bottom: 15px;">Msimu wa Matokeo 2025</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 20px;">Tazama ufaulu wa hivi punde kwa shule yetu (S1159).
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
-                        class="btn-necta">
-                        📊 Kidato cha Nne (CSEE) 2025
-                    </a>
-                    <a href="https://onlinesys.necta.go.tz/results/2025/acsee/results/s1159.htm" target="_blank"
-                        class="btn-necta" style="border-color: #fff; color: #fff;">
-                        🎓 Kidato cha Sita (ACSEE) 2025
-                    </a>
-                </div>
-            </div>
-
-            <div class="glass-card" style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid #888;">
-                <h3 style="color: #ccc; margin-bottom: 15px;">Kumbukumbu za Matokeo 2024</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 20px;">Tazama ufaulu wa shule kwa mwaka uliopita (S1159).
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="https://onlinesys.necta.go.tz/results/2024/csee/results/s1159.htm" target="_blank"
-                        class="btn-necta-old">
-                        📊 Kidato cha Nne (CSEE) 2024
-                    </a>
-                    <a href="https://onlinesys.necta.go.tz/results/2024/acsee/results/s1159.htm" target="_blank"
-                        class="btn-necta-old">
-                        🎓 Kidato cha Sita (ACSEE) 2024
-                    </a>
-                </div>
-            </div>
-            <div class="glass-card box border-blue">
-                <h3 style="color: #3498db;">MOCK 2025</h3>
-                <p class="box-subtitle">Matokeo ya Majaribio ya Mkoa/Kanda</p>
-                <div class="button-stack">
-                    <a href="https://mock.famnet.co.tz/results/view/SS664f3889f358a_NC_136?v=1770032456" target="_blank"
-                        class="btn btn-download">Mock Kidato cha Nne</a>
-                    <a href="https://drive.google.com/file/d/1lv31sSma0JkkRveXu3lbDm_2-WI26IKo/view" target="_blank"
-                        class="btn btn-download">Mock Kidato cha Sita</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="kalenda">
-        <div class="glass-card border-blue">
-            <h2 style="text-align: center; color: #3498db; margin-bottom: 20px;">📅 Kalenda ya Shule 2026</h2>
-            <p style="text-align: center; font-size: 0.9rem; margin-bottom: 25px; opacity: 0.8;">Ratiba rasmi ya masomo
-                na likizo kwa mwaka wa masomo 2026.</p>
-
-            <div class="calendar-container">
-                <div class="term-box">
-                    <h3 class="term-title">Muhula wa Kwanza (I)</h3>
-                    <table class="calendar-table">
-                        <tr>
-                            <td>Kuanza</td>
-                            <td>13/01/2026</td>
-                        </tr>
-                        <tr>
-                            <td>Likizo Fupi</td>
-                            <td>27/03/2026 - 08/04/2026</td>
-                        </tr>
-                        <tr>
-                            <td>Kufunga</td>
-                            <td>05/06/2026</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Siku za Masomo</td>
-                            <td>98</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="term-box">
-                    <h3 class="term-title" style="border-left-color: #52c41a;">Muhula wa Pili (II)</h3>
-                    <table class="calendar-table">
-                        <tr>
-                            <td>Kuanza</td>
-                            <td>06/07/2026</td>
-                        </tr>
-                        <tr>
-                            <td>Likizo Fupi</td>
-                            <td>04/09/2026 - 14/09/2026</td>
-                        </tr>
-                        <tr>
-                            <td>Kufunga</td>
-                            <td>04/12/2026</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Siku za Masomo</td>
-                            <td>96</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="maisha">
-        <h2 class="section-title">Maisha ya Shule</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <h3>Michezo na Sanaa</h3>
-                <p>Tuna klabu za Mpira wa Miguu, Midahalo (Debate), na Vikundi vya Sanaa.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Huduma za Malazi</h3>
-                <p>Mabweni yenye usalama wa kutosha na chakula chenye lishe bora mara tatu kwa siku.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="usajili">
-        <h2 class="section-title">Usajili na Fomu za Kujiunga</h2>
-
-        <div class="results-container">
-            <div class="glass-card result-box border-blue">
-                <h3 style="color: #3498db;">Kidato cha Kwanza (Form 1)</h3>
-                <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha kwanza.</p>
-                <div class="button-stack">
-                    <a href="F1- FOMU YA KUJIUNGA 2026.pdf" target="_blank" class="btn-download">
-                        📥 Pakua Joining Instruction (F1)
-                    </a>
-                </div>
-            </div>
-
-            <div class="glass-card result-box border-blue">
-                <h3 style="color: #3498db;">Kidato cha tano (Form 5)</h3>
-                <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha tano.</p>
-                <div class="button-stack">
-                    <a href="form_five_joining_2026.pdf" target="_blank" class="btn-download">
-                        📥 Pakua Joining Instruction (F5)
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="mawasiliano">
-        <h2 class="section-title">Mawasiliano</h2>
-        <div class="grid-container">
-            <div class="glass-card">
-                <h3>Tuandikie Ujumbe</h3>
-                <form>
-                    <div class="glass-card">
-                        <h3>Tuandikie Ujumbe WhatsApp</h3>
-                        <form id="whatsappForm">
-                            <input type="text" id="senderName" placeholder="Jina Lako" required
-                                style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;">
-
-                            <textarea id="senderMessage" placeholder="Andika ujumbe wako hapa..." rows="4" required
-                                style="width:100%; padding:12px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;"></textarea>
-
-                            <br><br>
-                            <button type="button" onclick="sendToWhatsApp()" class="btn" style="width: 100%;">
-                                Tuma Ujumbe Direct (WhatsApp)
-                            </button>
-                        </form>
-                    </div>
-                </form>
-            </div>
-            <div class="glass-card">
-                <h3>Ofisi Yetu</h3>
-                <p>📍 TANZANIA, ARUSHA,NGORONGORO</p>
-                <p>📞 +255 755 990 912 MKUU WA SHULE</p>
-                <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
-                <p>📞 +255 755 702 037 MWL MALEZI</p>
-                <p>✉️ info@embarwaysec.ac.tz</p>
-                <br>
-                <div
-                    style="height: 200px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15945.834458394!2d35.26615555!3d-3.19792445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183362eaec2424f5%3A0x8226b2b2a696a281!2sEndulen!5e0!3m2!1sen!2stz!4v1700000000000!5m2!1sen!2stz"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-    </section>
-
-
-    <footer>
-        <p>&copy; 2026 Shule ya Sekondari Emabarway. Haki zote zimehifadhiwa.</p>
-    </footer>
-
-    <script>
-        // Hii ni function ya slideshow uliyokuwa nayo awali (Iache kama ipo)
-        let current = 0;
-        const slides = document.querySelectorAll('.slide');
-        if (slides.length > 0) {
-            setInterval(() => {
-                slides[current].classList.remove('active');
-                current = (current + 1) % slides.length;
-                slides[current].classList.add('active');
-            }, 4500);
+    <style>
+        /* 1. Updates Marquee */
+        .updates-bar {
+            background: rgba(128, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            margin-top: 80px;
+            /* Nafasi baada ya header */
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+            white-space: nowrap;
         }
 
-        // --- HII NDIO FUNCTION MPYA YA WHATSAPP ---
-        function sendToWhatsApp() {
-            const phoneNumber = "255754088341"; // Namba yako ya Endulen
-            const name = document.getElementById('senderName').value;
-            const message = document.getElementById('senderMessage').value;
+        .updates-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-weight: bold;
+            color: #fff;
+        }
 
-            if (name.trim() === "" || message.trim() === "") {
-                alert("Tafadhali jaza jina na ujumbe kabla ya kutuma.");
-                return;
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
             }
 
-            // Tunatengeneza maandishi yatakayoonekana kule WhatsApp
-            const text = "Habari, naitwa " + name + ". " + message;
-            const encodedText = encodeURIComponent(text);
-            const url = "https://wa.me/" + phoneNumber + "?text=" + encodedText;
-
-            // Inafungua WhatsApp kwenye tab mpya
-            window.open(url, '_blank');
+            100% {
+                transform: translateX(-100%);
+            }
         }
-        const searchData = [
-            { name: "Matokeo 2025 (NECTA)", link: "#taaluma" },
-            { name: "Matokeo 2024 (NECTA)", link: "#taaluma" },
-            { name: "Matokeo ya Ndani (Form 1-6)", link: "#taaluma" },
-            { name: "Ratiba ya Shule / Kalenda", link: "#kalenda" },
-            { name: "Mahali Shule Ilipo (Ramani)", link: "#mawasiliano" },
-            { name: "Mawasiliano / Simu / WhatsApp", link: "#mawasiliano" },
-            { name: "Fomu ya Usajili / Joining Instructions", link: "#usajili-section" },
-            { name: "Combinations / Michepuo", link: "#kuhusu" },
-            { name: "Fomu ya Kujiunga Kidato cha Kwanza (Form One Joining)", link: "#usajili-section" },
-            { name: "Joining Instructions", link: "#usajili-section" },
-            { name: "F1- FOMU YA KUJIUNGA 2026", link: "#usajili-section" },
-            { name: "Fomu ya Kujiunga Form Five (F5)", link: "#usajili-section" },
-        ];
 
-        function liveSearch() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let box = document.getElementById('searchSuggestions');
-            box.innerHTML = "";
+        /* 2. Welcome Layout */
+        .welcome-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
 
-            if (input.length > 0) {
-                let results = searchData.filter(item => item.name.toLowerCase().includes(input));
+        .quote-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 25px;
+            border-left: 5px solid #800000;
+            font-style: italic;
+        }
 
-                if (results.length > 0) {
-                    box.style.display = "block";
-                    results.forEach(result => {
-                        let div = document.createElement('div');
-                        div.className = "suggestion-item";
-                        div.innerHTML = result.name;
-                        div.onclick = function () {
-                            window.location.href = result.link;
-                            box.style.display = "none";
-                            document.getElementById('searchInput').value = "";
-                        };
-                        box.appendChild(div);
-                    });
+        .headmaster-box {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .headmaster-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <section id="taaluma">
+        <div class="updates-bar">
+            <div class="updates-content">
+                🔥 TAARIFA ZA PUNDE: Matokeo ya Kidato cha Nne (CSEE) 2025 yametoka! Wastani wa Shule ni GPA
+                3.2920(Daraja
+                C). Hongereni wahitimu wote! &nbsp;&nbsp;&nbsp;&nbsp; 📢 USAJILI: Nafasi za kuhamia kwa Kidato cha
+                Kwanza
+                zimeisha.
+            </div>
+        </div>
+        </div>
+
+    </section>
+    <div class="main-content" style="padding-top: 40px;">
+
+        <div class="welcome-section">
+            <div class="glass-card" style="margin-bottom: 0;">
+                <h3 style="color: #ffb3b3;">✨ Neno la Mwezi</h3>
+                <div class="quote-card">
+                    "Elimu ni silaha yenye nguvu zaidi unayoweza kuitumia kubadilisha ulimwengu. Tuweke bidii katika
+                    masomo yetu mwezi huu wa Februari."
+                </div>
+                <p style="text-align: right; font-size: 0.8rem; margin-top: 10px;">— Nelson Mandela</p>
+            </div>
+
+            <div class="glass-card" style="margin-bottom: 0;">
+                <h3 style="color: #b3d1ff;">👨‍🏫 Ujumbe wa Mkuu wa Shule</h3>
+                <div class="headmaster-box">
+                    <img src="mkuu.jpg" alt="Mkuu wa Shule" class="headmaster-img">
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            "Karibuni Embarway Secondary. Tunalenga kutoa elimu bora na malezi yenye maadili kwa vijana
+                            wetu ili waweze kuwa viongozi bora wa kesho."
+                        </p>
+                        <p style="margin-top: 10px; font-weight: bold; color: #ffb3b3;">Mkuu wa Shule Bw.Fidelis BIlaly
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="matokeo" class="glass-card" style="margin-top: 40px;">
+            <h2>📊 Matokeo ya Kidato cha Nne (CSEE 2025)</h2>
+            <p>Huu hapa ni muhtasari wa Ufaulu:</p>
+
+            <div class="grid">
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0; color: #52c41a;">GPA 3.0180</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wastani wa Shule (Grade C)</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Division I & II</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wanafunzi 70</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Division III & IV</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wanafunzi 194</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Hakuna Division 0</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="quick-links">
+            <div class="glass-card" style="text-align: center; margin-top: 20px;">
+                <h3>Matokeo ya Mtihani wa kidato cha nne 2025</h3>
+                <p>Bonyeza kitufe hapa chini kutazama matokeo ya hivi punde ya Kidato cha Nne 2025.</p>
+                <br>
+                <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
+                    class="btn-matokeo">
+                    📊 Fungua Matokeo ya 2025
+                </a>
+            </div>
+
+        </div>
+
+        <section id="kuhusu">
+            <h2 class="section-title">Kuhusu Sisi</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Historia Yetu</h3>
+                    <p>Ilianzishwa mwaka 2000 ikiwa na lengo la kuwahudumia watoto wa jamii ya wafugaji na Waishio
+                        Ngorongoro,
+                        ikichochewa na mazingira ya kipekee ya Ngorongoro.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Dira na Dhima</h3>
+                    <p><strong>Dira:</strong> Kuwa kitovu cha ubora wa elimu kanda ya kaskazini.<br>
+                        <strong>Dhima:</strong> Kutoa mafunzo bora ya kitaaluma na stadi za maisha.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3>Mazingira</h3>
+                    <p>Shule ipo Ngorongoro - Endulen. Tunafurahia hali ya hewa ya ubaridi na ukaribu na maliasili za
+                        nchi
+                        yetu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="taaluma">
+            <h2 class="section-title">Taaluma</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Mitaala</h3>
+                    <p>Tunatoa mchepuo wa Sayansi, Sanaa na Biashara kwa O-Level na A-Level.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>(Combinations)</h3>
+                    <div class="combos">
+                        <span class="badge">HGL</span> <span class="badge">HGK</span>
+                        <span class="badge">HGE</span> <span class="badge">HGLi</span>
+                        <span class="badge">CBG</span> <span class="badge">HKL</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3>Vifaa vya Kujifunzia</h3>
+                    <p>Tuna Maktaba ya kisasa na Maabara tatu za Sayansi zilizosheheni vifaa vya kutosha.</p>
+                </div>
+                <div class="grid">
+                    <h2 class="section-title">Matokeo ya Mitihani ya shule</h2>
+
+                    <div class="glass-card"
+                        style="flex: 1; min-width: 320px; text-align: center; border-top: 5px solid #ffcc00; background: rgba(255, 204, 0, 0.03);">
+                        <h3 style="color: #ffcc00; margin-bottom: 5px;">Mitihani ya Shule</h3>
+                        <p style="font-size: 0.8rem; margin-bottom: 15px; opacity: 0.8;">Matokeo ya Muhula/Mwisho wa
+                            Mwaka</p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <a href="#" class="btn-internal">Form 1 - View</a>
+                            <a href="#" class="btn-internal">Form 2 - View</a>
+                            <a href="#" class="btn-internal">Form 3 - View</a>
+                            <a href="#" class="btn-internal">Form 4 - View</a>
+                            <a href="#" class="btn-internal">Form 5 - View</a>
+                            <a href="#" class="btn-internal">Form 6 - View</a>
+                        </div>
+                        <p style="font-size: 0.7rem; margin-top: 12px; color: #ffcc00;">*Haya ni matokeo ya ndani ya
+                            shule (Shule ya sekondary Embarway)</p>
+                    </div>
+
+                </div>
+        </section>
+        <section id="Matokeo">
+            <h2 class="section-title">Matokeo ya Mitihani Ya kitaifa</h2>
+
+            <div
+                style="display: flex; flex-direction: row; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%;">
+
+                <div class="glass-card"
+                    style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid var(--accent-green);">
+                    <h3 style="color: var(--accent-green); margin-bottom: 15px;">Msimu wa Matokeo 2025</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 20px;">Tazama ufaulu wa hivi punde kwa shule yetu
+                        (S1159).
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
+                            class="btn-necta">
+                            📊 Kidato cha Nne (CSEE) 2025
+                        </a>
+                        <a href="https://onlinesys.necta.go.tz/results/2025/acsee/results/s1159.htm" target="_blank"
+                            class="btn-necta" style="border-color: #fff; color: #fff;">
+                            🎓 Kidato cha Sita (ACSEE) 2025
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-card"
+                    style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid #888;">
+                    <h3 style="color: #ccc; margin-bottom: 15px;">Kumbukumbu za Matokeo 2024</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 20px;">Tazama ufaulu wa shule kwa mwaka uliopita
+                        (S1159).
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="https://onlinesys.necta.go.tz/results/2024/csee/results/s1159.htm" target="_blank"
+                            class="btn-necta-old">
+                            📊 Kidato cha Nne (CSEE) 2024
+                        </a>
+                        <a href="https://onlinesys.necta.go.tz/results/2024/acsee/results/s1159.htm" target="_blank"
+                            class="btn-necta-old">
+                            🎓 Kidato cha Sita (ACSEE) 2024
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-card box border-blue">
+                    <h3 style="color: #3498db;">MOCK 2025</h3>
+                    <p class="box-subtitle">Matokeo ya Majaribio ya Mkoa/Kanda</p>
+                    <div class="button-stack">
+                        <a href="https://mock.famnet.co.tz/results/view/SS664f3889f358a_NC_136?v=1770032456"
+                            target="_blank" class="btn btn-download">Mock Kidato cha Nne</a>
+                        <a href="https://drive.google.com/file/d/1lv31sSma0JkkRveXu3lbDm_2-WI26IKo/view" target="_blank"
+                            class="btn btn-download">Mock Kidato cha Sita</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kalenda">
+            <div class="glass-card border-blue">
+                <h2 style="text-align: center; color: #3498db; margin-bottom: 20px;">📅 Kalenda ya Shule 2026</h2>
+                <p style="text-align: center; font-size: 0.9rem; margin-bottom: 25px; opacity: 0.8;">Ratiba rasmi ya
+                    masomo
+                    na likizo kwa mwaka wa masomo 2026.</p>
+
+                <div class="calendar-container">
+                    <div class="term-box">
+                        <h3 class="term-title">Muhula wa Kwanza (I)</h3>
+                        <table class="calendar-table">
+                            <tr>
+                                <td>Kuanza</td>
+                                <td>13/01/2026</td>
+                            </tr>
+                            <tr>
+                                <td>Likizo Fupi</td>
+                                <td>27/03/2026 - 08/04/2026</td>
+                            </tr>
+                            <tr>
+                                <td>Kufunga</td>
+                                <td>05/06/2026</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>Siku za Masomo</td>
+                                <td>98</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h3 class="term-title" style="border-left-color: #52c41a;">Muhula wa Pili (II)</h3>
+                        <table class="calendar-table">
+                            <tr>
+                                <td>Kuanza</td>
+                                <td>06/07/2026</td>
+                            </tr>
+                            <tr>
+                                <td>Likizo Fupi</td>
+                                <td>04/09/2026 - 14/09/2026</td>
+                            </tr>
+                            <tr>
+                                <td>Kufunga</td>
+                                <td>04/12/2026</td>
+                            </tr>
+                            <tr class="highlight">
+                                <td>Siku za Masomo</td>
+                                <td>96</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="maisha">
+            <h2 class="section-title">Maisha ya Shule</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Michezo na Sanaa</h3>
+                    <p>Tuna klabu za Mpira wa Miguu, Midahalo (Debate), na Vikundi vya Sanaa.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Huduma za Malazi</h3>
+                    <p>Mabweni yenye usalama wa kutosha na chakula chenye lishe bora mara tatu kwa siku.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="usajili">
+            <h2 class="section-title">Usajili na Fomu za Kujiunga</h2>
+
+            <div class="results-container">
+                <div class="glass-card result-box border-blue">
+                    <h3 style="color: #3498db;">Kidato cha Kwanza (Form 1)</h3>
+                    <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha kwanza.</p>
+                    <div class="button-stack">
+                        <a href="F1- FOMU YA KUJIUNGA 2026.pdf" target="_blank" class="btn-download">
+                            📥 Pakua Joining Instruction (F1)
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-card result-box border-blue">
+                    <h3 style="color: #3498db;">Kidato cha tano (Form 5)</h3>
+                    <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha tano.</p>
+                    <div class="button-stack">
+                        <a href="form_five_joining_2026.pdf" target="_blank" class="btn-download">
+                            📥 Pakua Joining Instruction (F5)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="mawasiliano">
+            <h2 class="section-title">Mawasiliano</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Tuandikie Ujumbe</h3>
+                    <form>
+                        <div class="glass-card">
+                            <h3>Tuandikie Ujumbe WhatsApp</h3>
+                            <form id="whatsappForm">
+                                <input type="text" id="senderName" placeholder="Jina Lako" required
+                                    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;">
+
+                                <textarea id="senderMessage" placeholder="Andika ujumbe wako hapa..." rows="4" required
+                                    style="width:100%; padding:12px; border-radius:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white;"></textarea>
+
+                                <br><br>
+                                <button type="button" onclick="sendToWhatsApp()" class="btn" style="width: 100%;">
+                                    Tuma Ujumbe Direct (WhatsApp)
+                                </button>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+                <div class="glass-card">
+                    <h3>Ofisi Yetu</h3>
+                    <p>📍 TANZANIA, ARUSHA,NGORONGORO</p>
+                    <p>📞 +255 755 990 912 MKUU WA SHULE</p>
+                    <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
+                    <p>📞 +255 755 702 037 MWL WA MALEZI</p>
+                    <p>✉️ info@embarwaysec.ac.tz</p>
+                    <br>
+                    <div
+                        style="height: 200px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15945.834458394!2d35.26615555!3d-3.19792445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183362eaec2424f5%3A0x8226b2b2a696a281!2sEndulen!5e0!3m2!1sen!2stz!4v1700000000000!5m2!1sen!2stz"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+        </section>
+
+
+        <footer>
+            <p>&copy; 2026 Shule ya Sekondari Emabarway. Haki zote zimehifadhiwa.</p>
+        </footer>
+
+        <script>
+            // Hii ni function ya slideshow uliyokuwa nayo awali (Iache kama ipo)
+            let current = 0;
+            const slides = document.querySelectorAll('.slide');
+            if (slides.length > 0) {
+                setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, 4500);
+            }
+
+            // --- HII NDIO FUNCTION MPYA YA WHATSAPP ---
+            function sendToWhatsApp() {
+                const phoneNumber = "255754088341"; // Namba yako ya Endulen
+                const name = document.getElementById('senderName').value;
+                const message = document.getElementById('senderMessage').value;
+
+                if (name.trim() === "" || message.trim() === "") {
+                    alert("Tafadhali jaza jina na ujumbe kabla ya kutuma.");
+                    return;
+                }
+
+                // Tunatengeneza maandishi yatakayoonekana kule WhatsApp
+                const text = "Habari, naitwa " + name + ". " + message;
+                const encodedText = encodeURIComponent(text);
+                const url = "https://wa.me/" + phoneNumber + "?text=" + encodedText;
+
+                // Inafungua WhatsApp kwenye tab mpya
+                window.open(url, '_blank');
+            }
+            const searchData = [
+                { name: "Matokeo 2025 (NECTA)", link: "#taaluma" },
+                { name: "Matokeo 2024 (NECTA)", link: "#taaluma" },
+                { name: "Matokeo ya Ndani (Form 1-6)", link: "#taaluma" },
+                { name: "Ratiba ya Shule / Kalenda", link: "#kalenda" },
+                { name: "Mahali Shule Ilipo (Ramani)", link: "#mawasiliano" },
+                { name: "Mawasiliano / Simu / WhatsApp", link: "#mawasiliano" },
+                { name: "Fomu ya Usajili / Joining Instructions", link: "#usajili-section" },
+                { name: "Combinations / Michepuo", link: "#kuhusu" },
+                { name: "Fomu ya Kujiunga Kidato cha Kwanza (Form One Joining)", link: "#usajili-section" },
+                { name: "Joining Instructions", link: "#usajili-section" },
+                { name: "F1- FOMU YA KUJIUNGA 2026", link: "#usajili-section" },
+                { name: "Fomu ya Kujiunga Form Five (F5)", link: "#usajili-section" },
+            ];
+
+            function liveSearch() {
+                let input = document.getElementById('searchInput').value.toLowerCase();
+                let box = document.getElementById('searchSuggestions');
+                box.innerHTML = "";
+
+                if (input.length > 0) {
+                    let results = searchData.filter(item => item.name.toLowerCase().includes(input));
+
+                    if (results.length > 0) {
+                        box.style.display = "block";
+                        results.forEach(result => {
+                            let div = document.createElement('div');
+                            div.className = "suggestion-item";
+                            div.innerHTML = result.name;
+                            div.onclick = function () {
+                                window.location.href = result.link;
+                                box.style.display = "none";
+                                document.getElementById('searchInput').value = "";
+                            };
+                            box.appendChild(div);
+                        });
+                    } else {
+                        box.style.display = "none";
+                    }
                 } else {
                     box.style.display = "none";
                 }
-            } else {
-                box.style.display = "none";
             }
-        }
 
-        // Kufunga box la search ukibonyeza kwingine
-        document.addEventListener('click', function (e) {
-            if (!document.getElementById('searchSuggestions').contains(e.target)) {
-                document.getElementById('searchSuggestions').style.display = "none";
-            }
-        });
-    </script>
+            // Kufunga box la search ukibonyeza kwingine
+            document.addEventListener('click', function (e) {
+                if (!document.getElementById('searchSuggestions').contains(e.target)) {
+                    document.getElementById('searchSuggestions').style.display = "none";
+                }
+            });
+        </script>
 
 </body>
 
