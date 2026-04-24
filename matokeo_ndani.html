@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zepox Omni-Tech | School Results System</title>
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.2);
+            --primary: #4facfe;
+        }
+
+        body {
+            margin: 0;
+            background: #0f172a;
+            font-family: 'Inter', system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            border: none;
+            border-radius: 10px;
+            color: #0f172a;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+
+        #status {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glass-panel">
+        <h2>Upload Results</h2>
+        <form id="resultsForm">
+            <div class="input-group">
+                <label>Jina la Mwalimu</label>
+                <input type="text" id="teacherName" placeholder="Ingiza jina lako" required>
+            </div>
+            <div class="input-group">
+                <label>Jina la Mtihani</label>
+                <input type="text" id="examName" placeholder="Mf: Terminal Jan 2026" required>
+            </div>
+            <div class="input-group">
+                <label>Kidato</label>
+                <select id="formLevel" required>
+                    <option value="Form 1">Form 1</option>
+                    <option value="Form 2">Form 2</option>
+                    <option value="Form 3">Form 3</option>
+                    <option value="Form 4">Form 4</option>
+                    <option value="Form 5">Form 5</option>
+                    <option value="Form 6">Form 6</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Faili (PDF, Excel, Picha)</label>
+                <input type="file" id="fileInput" accept=".pdf,.xlsx,.xls,.png,.jpg" required>
+            </div>
+            <button type="submit" id="submitBtn">TUMA MATOKEO</button>
+            <div id="status"></div>
+        </form>
+    </div>
+
+    <script>
+        // Link yako ya Apps Script
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdponGp07cMEoy_sMe3XvIa5p7pilFMe5GWQxaSdltpsiQlaldw2bnhgtWpNeXdIBv/exec";
+
+        // Hifadhi ya data ya mwalimu
+        let teacherData = {};
+
+        const form = document.getElementById('resultsForm');
+        const statusDiv = document.getElementById('status');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            btn.disabled = true;
+            btn.innerText = "Inatuma...";
+            statusDiv.style.display = "block";
+            statusDiv.style.background = "rgba(255,255,255,0.05)";
+            statusDiv.innerText = "Tafadhali subiri, data inapakiwa...";
+
+            // Kukusanya taarifa kwenye Object ya teacherData
+            teacherData = {
+                teacher: document.getElementById('teacherName').value,
+                exam: document.getElementById('examName').value,
+                level: document.getElementById('formLevel').value
+            };
+
+            const file = document.getElementById('fileInput').files[0];
+            const reader = new FileReader();
+
+            reader.onload = async function () {
+                const base64Data = reader.result.split(',')[1];
+
+                const payload = {
+                    fileData: base64Data,
+                    fileName: file.name,
+                    mimeType: file.type,
+                    ...teacherData // Inaunganisha data za mwalimu hapa
+                };
+
+                try {
+                    // Kutuma data kwa kutumia Fetch na SCRIPT_URL
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Muhimu kwa Google Apps Script POST
+                        body: JSON.stringify(payload)
+                    });
+
+                    statusDiv.innerText = "Umefanikiwa! Matokeo ya " + teacherData.exam + " yamehifadhiwa.";
+                    statusDiv.style.color = "#4ade80";
+                    form.reset();
+                } catch (error) {
+                    statusDiv.innerText = "Hitilafu imetokea. Jaribu tena.";
+                    statusDiv.style.color = "#f87171";
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = "TUMA MATOKEO";
+                }
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+</body>
+
+</html>

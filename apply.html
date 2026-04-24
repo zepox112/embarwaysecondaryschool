@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fomu ya Maombi - Embarway Secondary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2d5a27;
+            --dark-grey: #1a1c1e;
+            --accent-green: #4ade80;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-grey), var(--primary-green));
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* --- BUTTON YA KURUDI NYUMBANI (LIQUID GLASS) --- */
+        .back-home-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .liquid-glass-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            /* Round liquid shape */
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Liquid Shine Effect */
+        .liquid-glass-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        .liquid-glass-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.2);
+        }
+
+        .liquid-glass-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .liquid-glass-btn span {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .liquid-glass-btn:hover span {
+            transform: translateX(-5px);
+            color: var(--accent-green);
+        }
+
+        /* --- KADI YA FOMU --- */
+        .apply-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--accent-green);
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .row-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        option {
+            background: #1a1c1e;
+            color: white;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-green);
+            color: var(--dark-grey);
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        @media screen and (max-width: 480px) {
+            .row-group {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .apply-card {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="back-home-container">
+        <a href="index.html" class="liquid-glass-btn">
+            <span>←</span> Rudi Nyumbani
+        </a>
+    </div>
+
+    <div class="apply-card">
+        <h2>Maombi ya Nafasi</h2>
+        <p>Embarway Secondary School - S1159</p>
+
+        <form id="admissionForm">
+            <div class="form-group">
+                <label>Jina Kamili la Mwanafunzi</label>
+                <input type="text" id="jina" placeholder="Andika majina yote" required>
+            </div>
+
+            <div class="row-group">
+                <div class="form-group" style="flex: 1;">
+                    <label>Umri</label>
+                    <input type="number" id="umri" placeholder="Miaka" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Jinsia</label>
+                    <select id="jinsia" required>
+                        <option value="Mvulana">Mvulana</option>
+                        <option value="Msichana">Msichana</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Shule unayotoka</label>
+                <input type="text" id="shule" placeholder="Jina la shule uliyotoka" required>
+            </div>
+
+            <div class="form-group">
+                <label>Ngazi uliyomaliza</label>
+                <select id="ngazi" required>
+                    <option value="Darasa la Saba">Darasa la Saba</option>
+                    <option value="Kidato cha Nne">Kidato cha Nne</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Maksi/Alama ulizomalizia</label>
+                <input type="text" id="maksi" placeholder="Mfano: GRADE A / DIVISION 1.7" required>
+            </div>
+
+            <div class="form-group">
+                <label>Namba ya Simu ya Mzazi/Mlezi</label>
+                <input type="tel" id="simu" placeholder="07XXXXXXXX" required>
+            </div>
+
+            <button type="button" onclick="sendToWhatsApp()" class="btn-submit">Tuma Maombi (WhatsApp)</button>
+        </form>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            const jina = document.getElementById('jina').value;
+            const umri = document.getElementById('umri').value;
+            const jinsia = document.getElementById('jinsia').value;
+            const shule = document.getElementById('shule').value;
+            const ngazi = document.getElementById('ngazi').value;
+            const maksi = document.getElementById('maksi').value;
+            const simu = document.getElementById('simu').value;
+
+            if (!jina || !shule || !maksi || !simu) {
+                alert("Tafadhali jaza nafasi zote!");
+                return;
+            }
+
+            const namba = "255754088341";
+            const ujumbe = "*MAOMBI YA NAFASI YA MASOMO - EMBARWAY*%0A" +
+                "------------------------------------%0A" +
+                "*Jina:* " + jina + "%0A" +
+                "*Umri:* " + umri + " Miaka%0A" +
+                "*Jinsia:* " + jinsia + "%0A" +
+                "*Shule:* " + shule + "%0A" +
+                "*Ngazi:* " + ngazi + "%0A" +
+                "*Ufaulu:* " + maksi + "%0A" +
+                "*Simu ya Mzazi:* " + simu;
+
+            const url = "https://wa.me/" + namba + "?text=" + ujumbe;
+            window.open(url, '_blank').focus();
+        }
+    </script>
+
+</body>
+
+</html>

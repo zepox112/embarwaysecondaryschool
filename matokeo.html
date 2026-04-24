@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matokeo - Embarway Secondary</title>
+    <style>
+        :root {
+            --primary-green: #008f39;
+            --dark-bg: #050a06;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-main: #ffffff;
+            --accent-blue: #3498db;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #0a1a0f, var(--dark-bg));
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        #Matokeo {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- HOME BUTTON --- */
+        .home-nav {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .btn-home {
+            padding: 10px 22px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.4s;
+        }
+
+        .btn-home:hover {
+            border-color: var(--primary-green);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 30px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: linear-gradient(to right, #fff, var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 30px rgba(0, 143, 57, 0.2);
+        }
+
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .internal-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        /* Buttons Style */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            color: white;
+            border: 1px solid transparent;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--primary-green), #00c851);
+            box-shadow: 0 4px 15px rgba(0, 143, 57, 0.3);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: black;
+        }
+
+        .btn-mock {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .btn-mock:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            border-style: dashed;
+        }
+
+        .loading-text {
+            color: #ffcc00;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h3 {
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .internal-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="Matokeo">
+        <div class="home-nav">
+            <a href="index.html" class="btn-home">🏠 Rudi Nyumbani</a>
+        </div>
+
+        <h2 class="section-title">Matokeo ya Ndani</h2>
+        <div style="display: flex; justify-content: center;">
+            <div class="glass-card"
+                style="width: 100%; max-width: 600px; text-align: center; border-top: 4px solid #ffcc00;">
+
+                <h3 id="dynamic-exam-type" style="color: #ffcc00; margin-bottom: 5px;">
+                    🏫 Ripoti za Mitihani ya Ndani
+                </h3>
+
+                <div id="exam-label-container" style="display: none; margin-bottom: 15px;">
+                    <span id="actual-exam-name"
+                        style="background: rgba(255, 204, 0, 0.2); color: #ffcc00; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid #ffcc00;">
+                        INAPAKIA...
+                    </span>
+                </div>
+
+                <span class="subtitle">Chagua darasa kuona matokeo ya hivi punde</span>
+
+                <div class="internal-links" id="internal-container" style="margin-top: 20px;">
+                    <p class="loading-text">Inapakia matokeo ya shule...</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .admission-container {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 20px;
+                padding: 20px;
+                max-width: 550px;
+                margin: 20px auto;
+                color: white;
+                font-family: sans-serif;
+                text-align: center;
+            }
+
+            .form-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin: 15px 0;
+            }
+
+            .form-item {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 15px;
+                border-radius: 12px;
+                text-decoration: none;
+                transition: 0.3s;
+                opacity: 0.4;
+                /* Inapakia... */
+                cursor: not-allowed;
+            }
+
+            .form-item.active {
+                opacity: 1;
+                cursor: pointer;
+                border-color: #008f39;
+            }
+
+            .form-item.active:hover {
+                background: rgba(0, 143, 57, 0.15);
+                transform: translateY(-2px);
+            }
+
+            .btn-apply {
+                background: #008f39;
+                color: white;
+                padding: 12px;
+                border-radius: 10px;
+                text-decoration: none;
+                display: block;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+
+            .status-text {
+                font-size: 0.7rem;
+                display: block;
+                margin-top: 5px;
+            }
+        </style>
+
+        <div class="admission-container">
+            <h3 style="margin: 0; color: #008f39;">Joining Instructions 2026</h3>
+
+            <div class="form-grid">
+                <a href="javascript:void(0)" id="box_f1" class="form-item">
+                    <span style="display: block; font-weight: bold;">FORM 1</span>
+                    <span id="stat_f1" class="status-text" style="color: #ff4d4d;">Inapakia...</span>
+                </a>
+
+                <a href="javascript:void(0)" id="box_f5" class="form-item">
+                    <span style="display: block; font-weight: bold;">FORM 5</span>
+                    <span id="stat_f5" class="status-text" style="color: #ff4d4d;">Inapakia...</span>
+                </a>
+            </div>
+
+            <a href="apply.html" class="btn-apply">🚀 APPLY NOW</a>
+        </div>
+        <h2 class="section-title">Matokeo ya Kitaifa & Mock</h2>
+        <div class="results-grid">
+            <div class="glass-card" style="border-top: 4px solid var(--primary-green); text-align: center;">
+                <h3 style="color: var(--primary-green);">Msimu wa Sasa</h3>
+                <span class="subtitle">Matokeo ya hivi karibuni (NECTA)</span>
+                <div id="current-necta-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <p class="loading-text">Inatafuta...</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="border-top: 4px solid var(--accent-blue); text-align: center;">
+                <h3 style="color: var(--accent-blue);">Matokeo ya MOCK</h3>
+                <span class="subtitle">Majaribio ya Mkoa na Wilaya</span>
+                <div id="mock-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <p class="loading-text">Inatafuta...</p>
+                </div>
+            </div>
+
+            <div class="glass-card" style="border-top: 4px solid #888; text-align: center;">
+                <h3 style="color: #ccc;">Kumbukumbu</h3>
+                <span class="subtitle">Matokeo ya miaka iliyopita</span>
+                <div id="previous-necta-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <p class="loading-text">Inatafuta...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- SCRIPT URL YA ZEPOX OMNI-TECH ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyd5zcdFnJNbUEQ0dI1vOB3ptos2bRJrlss12ATVqM-ckcgSMXHrim9gfhjbKeQZ7cr/exec";
+
+        // 1. Kazi ya kuonyesha Joining Forms (Inategemea Data ya Sheet pekee)
+        function updateJoiningUI(f1Link, f5Link) {
+            const b1 = document.getElementById('box_f1');
+            const b5 = document.getElementById('box_f5');
+            const s1 = document.getElementById('stat_f1');
+            const s5 = document.getElementById('stat_f5');
+
+            if (f1Link && f1Link.startsWith("http")) {
+                if (b1) {
+                    b1.href = f1Link;
+                    b1.target = "_blank";
+                    b1.classList.add('active');
+                    if (s1) { s1.innerText = "Tayari (PDF)"; s1.style.color = "#4ade80"; }
+                }
+            }
+            if (f5Link && f5Link.startsWith("http")) {
+                if (b5) {
+                    b5.href = f5Link;
+                    b5.target = "_blank";
+                    b5.classList.add('active');
+                    if (s5) { s5.innerText = "Tayari (PDF)"; s5.style.color = "#4ade80"; }
+                }
+            }
+        }
+
+        async function loadAllResults() {
+            try {
+                // 2. Vuta data yote kwa mpigo kutoka kwenye Sheet
+                const response = await fetch(SCRIPT_URL + "?action=getAllData", { priority: 'high' });
+                if (!response.ok) throw new Error('Network error');
+                const data = await response.json();
+
+                // --- 3. JAZA MATOKEO YA NDANI (INTERNAL RESULTS) ---
+                const internalCont = document.getElementById('internal-container');
+                if (internalCont && data.internal) {
+                    internalCont.innerHTML = "";
+                    const levels = [
+                        { id: "form1", t: "Form 1" },
+                        { id: "form2", t: "Form 2" },
+                        { id: "form3", t: "Form 3" },
+                        { id: "form4", t: "Form 4" },
+                        { id: "form5", t: "Form 5" },
+                        { id: "form6", t: "Form 6" },
+                        { id: "mock_f4", t: "Mock Form 4" },
+                        { id: "mock_f6", t: "Mock Form 6" }
+                    ];
+
+                    levels.forEach(l => {
+                        const found = data.internal.find(x => x.level.toLowerCase() === l.id.toLowerCase());
+                        const link = (found && found.link && found.link !== "" && found.link !== "#") ? found.link : "#";
+                        const examTitle = (found && found.title && found.title !== "") ? found.title : "Soon";
+                        const isOff = link === "#";
+
+                        internalCont.innerHTML += `
+                        <a href="${link}" ${isOff ? "" : 'target="_blank"'} class="btn btn-outline ${isOff ? 'btn-disabled' : ''}" style="text-align: center; padding: 12px;">
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <span style="font-weight: 800; font-size: 1rem; color: #f1c40f;">${l.t}</span>
+                                <span style="font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; color: #fff;">${isOff ? '(Coming Soon)' : examTitle}</span>
+                            </div>
+                        </a>`;
+                    });
+                }
+
+                // --- 4. JAZA JOINING INSTRUCTIONS (Moja kwa moja kutoka Sheet) ---
+                if (data.internal) {
+                    const joinF1 = data.internal.find(x => x.level.toLowerCase() === "join_f1");
+                    const joinF5 = data.internal.find(x => x.level.toLowerCase() === "join_f5");
+
+                    const f1Link = (joinF1 && joinF1.link && joinF1.link !== "" && joinF1.link !== "#") ? joinF1.link : null;
+                    const f5Link = (joinF5 && joinF5.link && joinF5.link !== "" && joinF5.link !== "#") ? joinF5.link : null;
+
+                    updateJoiningUI(f1Link, f5Link);
+                }
+
+                // --- 5. JAZA NECTA RESULTS ---
+                const currentCont = document.getElementById('current-necta-container');
+                const mockCont = document.getElementById('mock-container');
+                const prevCont = document.getElementById('previous-necta-container');
+
+                if (currentCont) currentCont.innerHTML = "";
+                if (mockCont) mockCont.innerHTML = "";
+                if (prevCont) prevCont.innerHTML = "";
+
+                if (data.necta && data.necta.length > 0) {
+                    data.necta.forEach(res => {
+                        const type = res.type ? res.type.toUpperCase() : "";
+                        const status = res.status ? res.status : "";
+                        const btnClass = type.includes('MOCK') ? 'btn-mock' : (status === 'Current' ? 'btn-green' : 'btn-outline');
+
+                        const btnHtml = `
+                        <a href="${res.link}" target="_blank" class="btn ${btnClass}">
+                            ${type} ${res.year}
+                        </a>`;
+
+                        if (type.includes('MOCK')) {
+                            if (mockCont) mockCont.innerHTML += btnHtml;
+                        } else if (status === "Current") {
+                            if (currentCont) currentCont.innerHTML += btnHtml;
+                        } else {
+                            if (prevCont) prevCont.innerHTML += btnHtml;
+                        }
+                    });
+                }
+
+            } catch (err) {
+                console.error("Zepox Omni-Tech Error:", err);
+                document.querySelectorAll('.loading-text').forEach(el => {
+                    el.innerHTML = "❌ Shida ya mtandao. Tafadhali refresh ukurasa.";
+                    el.style.color = "#ff4d4d";
+                });
+            }
+        }
+
+        // Pakia kila kitu mara tu ukurasa unapokuwa tayari
+        document.addEventListener('DOMContentLoaded', loadAllResults);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Admin | Embarway</title>
+    <style>
+        :root {
+            --primary: #4ade80;
+            --glass: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0f1113, #1a1d21, #0a0c0e, #16211b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #main-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        h2 {
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+        }
+
+        label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: #064e3b;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 15px -3px rgba(74, 222, 128, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(74, 222, 128, 0.4);
+            filter: brightness(1.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #334155;
+            color: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #statusMsg {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Style kwa ajili ya Chatbot Icon */
+        #chatbase-bubble-button {
+            background: rgba(45, 90, 39, 0.4) !important;
+            /* Kijani ya kioo */
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+            bottom: 25px !important;
+            right: 25px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        #chatbase-bubble-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(74, 222, 128, 0.6) !important;
+            /* Inang'aa zaidi ukigusa */
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.4) !important;
+        }
+
+        .logout-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #ef4444;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .logout-link:hover {
+            opacity: 1;
+        }
+
+        input[type="file"] {
+            background: transparent;
+            border: 1px dashed var(--border);
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-container">
+
+        <div id="loginArea">
+            <h2 style="text-align: center;">Teacher Login</h2>
+            <label>Nenosiri (Password)</label>
+            <input type="password" id="passInput" placeholder="••••••••">
+
+            <button onclick="checkLogin()" id="loginBtn">INGIA PORTAL</button>
+        </div>
+
+        <div id="uploadArea" style="display: none;">
+            <h2 style="text-align: center;">Pakia Kazi Drive</h2>
+
+            <label>Jina la Mwalimu</label>
+            <input type="text" id="tName" placeholder="Mwl. Kennedy">
+
+            <label>WhatsApp Number</label>
+            <input type="number" id="tPhone" placeholder="0747...">
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <label>Kidato</label>
+                    <select id="classSelect" onchange="filterSubjects()">
+                        <option value="">Chagua...</option>
+                        <option value="f1">Form 1</option>
+                        <option value="f2">Form 2</option>
+                        <option value="f3">Form 3</option>
+                        <option value="f4">Form 4</option>
+                        <option value="f5">Form 5</option>
+                        <option value="f6">Form 6</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Somo</label>
+                    <select id="subSelect">
+                        <option value="">Chagua...</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>Chagua Faili</label>
+            <input type="file" id="fileInput">
+
+            <button onclick="startUpload()" id="upBtn">TUMA KAZI KWENYE SHEET</button>
+            <a href="#" onclick="location.reload()" class="logout-link">Toka (Logout)</a>
+        </div>
+
+        <p id="statusMsg" style="display: none;"></p>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwG_0VigeaoNl0qF22apyLZMFs-z55hXegCnghUXNlA7QuFETfZiRJZjO9bcBN1iz0B/exec";
+
+        function checkLogin() {
+            const pass = document.getElementById('passInput').value;
+            if (pass === "Embarway@2026" || pass === "1234") {
+                document.getElementById('loginArea').style.display = "none";
+                document.getElementById('uploadArea').style.display = "block";
+            } else {
+                alert("Nenosiri si sahihi!");
+            }
+        }
+
+        const masomoData = {
+            f1: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
+            f2: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
+            f3: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
+            f4: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
+            f5: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Literature in English 1", "Literature in English 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "Fasihi 1", "Fasihi 2", "Historia ya Tanzania na Maadili", "BAM"],
+            f6: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "General Studies (GS)", "BAM"]
+        };
+
+        function filterSubjects() {
+            const cls = document.getElementById('classSelect').value;
+            const subDropdown = document.getElementById('subSelect');
+            subDropdown.innerHTML = '<option value="">Chagua...</option>';
+            if (cls) masomoData[cls].forEach(s => {
+                let opt = document.createElement('option'); opt.value = s; opt.text = s;
+                subDropdown.appendChild(opt);
+            });
+        }
+
+        async function startUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const name = document.getElementById('tName').value;
+            const phone = document.getElementById('tPhone').value;
+            const sub = document.getElementById('subSelect').value;
+            const level = document.getElementById('classSelect').value;
+
+            if (!file || !name || !sub || !level) return alert("Jaza taarifa zote!");
+
+            const btn = document.getElementById('upBtn');
+            const status = document.getElementById('statusMsg');
+
+            btn.disabled = true;
+            btn.innerHTML = "Inatuma Data...";
+            status.style.display = "block";
+            status.style.background = "rgba(255,255,255,0.1)";
+            status.style.color = "white";
+            status.innerHTML = "Inaprocess... subiri kidogo.";
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = async () => {
+                const base64Data = reader.result.split(',')[1];
+
+                // Hapa tunakata sifuri ya mwanzoni kama ipo kabla ya kutuma
+                const formattedPhone = phone.replace(/^0+/, '');
+
+                const payload = {
+                    filename: file.name,
+                    mimeType: file.type,
+                    base64: base64Data,
+                    teacher: name,
+                    phone: formattedPhone,
+                    subject: sub,
+                    level: level
+                };
+
+                try {
+                    const response = await fetch(SCRIPT_URL, {
+                        method: "POST",
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.status === "success") {
+                        status.style.background = "rgba(74, 222, 128, 0.1)";
+                        status.style.color = "#4ade80";
+                        status.innerHTML = "✓ Hongera! Kazi imetumwa kikamilifu.";
+                        fileInput.value = "";
+                    } else { throw new Error(); }
+                } catch (e) {
+                    status.style.background = "rgba(239, 68, 68, 0.1)";
+                    status.style.color = "#ef4444";
+                    status.innerHTML = "Hitilafu! Angalia internet yako.";
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = "TUMA KAZI KWENYE SHEET";
+                }
+            };
+        }
+    </script>
+    <script>
+        (function () {
+            if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+                window.chatbase = (...arguments) => {
+                    if (!window.chatbase.q) { window.chatbase.q = [] }
+                    window.chatbase.q.push(arguments)
+                };
+                window.chatbase = new Proxy(window.chatbase, {
+                    get(target, prop) {
+                        if (prop === "q") { return target.q }
+                        return (...args) => target(prop, ...args)
+                    }
+                })
+            }
+            const onLoad = function () {
+                const script = document.createElement("script");
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.id = "QXDYf6ffjtiFCs0Y9KLH4";
+                script.domain = "www.chatbase.co";
+                document.body.appendChild(script)
+            };
+            if (document.readyState === "complete") { onLoad() }
+            else { window.addEventListener("load", onLoad) }
+        })();
+    </script>
+</body>
+
+</html>

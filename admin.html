@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Zepox Admin">
+    <title>Embarway Secondary School | Admin Pannel</title>
+    <link rel="apple-touch-icon" href="logo.jpg">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="shortcut icon" href="logo.jpg">
+
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <link rel="icon" sizes="192x192" href="logo.jpg">
+    <meta name="theme-color" content="#050a06">
+
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root {
+            --primary: #008f39;
+            --gold: #ffcc00;
+            --dark: #050a06;
+            --glass: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #0a1a0f, var(--dark));
+            color: white;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Hii inaficha maudhui ya admin mwanzo */
+        #main-wrapper {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .fade-in {
+            display: block !important;
+            opacity: 1 !important;
+        }
+
+        /* Login Panel katikati */
+        #admin-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .section-title {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: #aaa;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            color: white;
+            font-family: inherit;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, var(--primary), #00c851);
+            color: white;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            color: black;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="admin-login-box">
+        <div class="glass-card" style="width: 100%; max-width: 400px; text-align: center; margin: 80px auto;">
+            <div id="login-form">
+                <h3 style="color: #b3d1ff;">🔐 Admin Access</h3>
+                <p style="font-size: 0.8rem; opacity: 0.8;">Ingiza password kusimamia tovuti ya Embarway.</p>
+                <input type="password" id="pass-input" placeholder="Password">
+                <button class="btn btn-gold" onclick="handleLogin(event)">Ingia Mfumoni</button>
+            </div>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <div class="container">
+            <div class="header">
+                <h1 style="margin:0; font-weight:800;">Zepox Omni-Tech</h1>
+                <p style="color:var(--primary); font-weight:600;">System ya Usimamizi - Embarway S1159</p>
+            </div>
+
+            <div class="glass-card">
+                <h2 class="section-title">📢 Maelezo ya Shule & Takwimu</h2>
+                <div class="grid">
+                    <div class="form-group">
+                        <label>Tangazo linalopita (Marquee)</label>
+                        <input type="text" id="info_marquee" placeholder="Mfano: Matokeo ya Kidato cha Nne yametoka!">
+                    </div>
+                    <div class="form-group">
+                        <label>Neno la Mwezi / Kauli Mbiu</label>
+                        <input type="text" id="info_neno" placeholder="Mfano: Elimu ni ufunguo wa maisha...">
+                    </div>
+                    <div class="form-group">
+                        <label>Msemaji / Mwandishi wa Neno</label>
+                        <input type="text" id="info_msemaji" placeholder="Mfano: Nelson Mandela">
+                    </div>
+                    <div class="form-group">
+                        <label>GPA ya Shule (Kwa mtihani wa mwisho wa Taifa form 4/6)</label>
+                        <input type="text" id="info_gpa" placeholder="Mfano: 3.0180">
+                    </div>
+                    <div class="form-group">
+                        <label>Daraja (Div) 1 & 2 (Idadi)</label>
+                        <input type="text" id="info_div12" placeholder="Mfano: Wanafunzi 70">
+                    </div>
+                    <div class="form-group">
+                        <label>Daraja (Div) 3 & 4 (Idadi)</label>
+                        <input type="text" id="info_div34" placeholder="Mfano: Wanafunzi 194">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ujumbe wa Mkuu wa Shule</label>
+                    <textarea id="info_mkuu" rows="3" placeholder="Andika ujumbe mfupi hapa..."></textarea>
+                </div>
+                <button class="btn btn-green" onclick="updateSchoolInfo()">Sasisha Taarifa za Shule</button>
+            </div>
+
+            <div class="glass-card" style="border-left: 5px solid var(--accent-gold);">
+            
+            </div>
+            <div class="glass-card" style="border-left: 5px solid #3498db; margin-top: 20px;">
+                <h2 class="section-title">📊 Usimamizi wa Matokeo ya Kitaifa & Mock</h2>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                    Tumia sehemu hii kuweka link za matokeo kutoka NECTA au Tovuti za Mikoa (Mock).
+                </p>
+
+                <div class="grid">
+                    <div class="form-group">
+                        <label>Mwaka wa Mtihani</label>
+                        <input type="number" id="necta_year" placeholder="Mfano: 2025" value="2025">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Aina ya Mtihani</label>
+                        <select id="necta_type">
+                            <optgroup label="NECTA">
+                                <option value="CSEE">CSEE (Kidato cha 4)</option>
+                                <option value="ACSEE">ACSEE (Kidato cha 6)</option>
+                                <option value="FTNA">FTNA (Kidato cha 2)</option>
+                            </optgroup>
+                            <optgroup label="MOCK">
+                                <option value="MOCK-F4">Mock Kidato cha 4</option>
+                                <option value="MOCK-F6">Mock Kidato cha 6</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>Link ya Matokeo (Paste URL hapa)</label>
+                        <input type="url" id="necta_link" placeholder="https://necta.go.tz/results/2025/csee..."
+                            style="width: 100%; border: 1px solid #3498db; background: rgba(52, 152, 219, 0.05);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hali ya Matokeo (Status)</label>
+                        <select id="necta_status">
+                            <option value="Current">Current (Mapya)</option>
+                            <option value="Previous">Previous (Yaliyopita)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <button onclick="sendNectaData()" id="btn_submit_necta"
+                        style="width: 100%; padding: 15px; background: #3498db; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+                        🚀 CHAPA MATOKEO KWENYE SHEET
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                // --- MASHARTI YA Mfumo ---
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZXOH4QKMiHFo1zwTfvwsM_wyPffKbBxHtdBEZqmxdaID5YlfuvtjfzKJ1815ggzE1/exec";
+                const DEFAULT_PASS = "Embarway@2026";
+                const RESET_CODE = "1234";
+
+                // 1. LOGIN LOGIC
+                function handleLogin(event) {
+                    if (event) event.preventDefault();
+
+                    const inputField = document.getElementById('pass-input');
+                    const loginBox = document.getElementById('admin-login-box');
+                    const adminPanel = document.getElementById('main-wrapper');
+
+                    if (!inputField || !loginBox || !adminPanel) {
+                        alert("Kuna tatizo la ID kwenye HTML! Hakikisha admin-login-box na main-wrapper zipo.");
+                        return;
+                    }
+
+                    const input = inputField.value;
+                    const savedPass = localStorage.getItem('adminPassword') || DEFAULT_PASS;
+
+                    if (input === RESET_CODE || input === savedPass) {
+                        if (input === RESET_CODE) {
+                            alert("⚠️ Reset Code imetumika! Password imerudishwa kuwa ya asili.");
+                            localStorage.setItem('adminPassword', DEFAULT_PASS);
+                        }
+
+                        loginBox.style.display = 'none';
+                        adminPanel.style.display = 'block';
+                        setTimeout(() => { adminPanel.style.opacity = '1'; }, 10);
+
+                        vutaDataKutokaSheet(); // Pakia data zilizopo sasa hivi
+                    } else {
+                        alert("❌ Password Sio Sahihi!");
+                    }
+                }
+
+                // 2. LOGOUT
+                function logout() {
+                    if (confirm("Je, unataka kutoka kwenye mfumo?")) {
+                        location.reload();
+                    }
+                }
+
+                // 3. VUTA DATA (GET)
+                async function vutaDataKutokaSheet() {
+                    try {
+                        const response = await fetch(SCRIPT_URL + "?action=getData");
+                        const data = await response.json();
+                        if (data && data.length > 0) {
+                            const ids = ['info_marquee', 'info_neno', 'info_msemaji', 'info_mkuu', 'info_gpa', 'info_div12', 'info_div34'];
+                            ids.forEach((id, i) => {
+                                const el = document.getElementById(id);
+                                if (el) el.value = data[i] || "";
+                            });
+                            console.log("Data imepakiwa kutoka Sheets.");
+                        }
+                    } catch (e) {
+                        console.error("Haikuweza kuvuta data: " + e);
+                    }
+                }
+
+                // 4. SASISHA TAARIFA ZA SHULE (POST)
+                async function updateSchoolInfo() {
+                    const btn = event.target;
+                    const originalText = btn.innerText;
+                    btn.innerText = "Inatuma... ⏳";
+                    btn.disabled = true;
+
+                    const payload = {
+                        action: 'updateSchoolInfo',
+                        data: {
+                            marquee: document.getElementById('info_marquee').value,
+                            neno: document.getElementById('info_neno').value,
+                            msemaji: document.getElementById('info_msemaji').value,
+                            mkuu: document.getElementById('info_mkuu').value,
+                            gpa: document.getElementById('info_gpa').value,
+                            div12: document.getElementById('info_div12').value,
+                            div34: document.getElementById('info_div34').value
+                        }
+                    };
+
+                    try {
+                        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+                        alert("✅ Taarifa za shule zimesasishwa!");
+                    } catch (e) {
+                        alert("❌ Hitilafu imetokea!");
+                    } finally {
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    }
+                }
+
+                // 5. WEKA MATOKEO YA NDANI (UPLOAD FILE)
+                async function uploadInternal() {
+                    const fileInput = document.getElementById('file_input');
+                    const level = document.getElementById('internal_level').value;
+                    const title = document.getElementById('internal_title').value;
+                    const btn = document.getElementById('btnInternal');
+
+                    if (!fileInput.files[0]) return alert("Tafadhali chagua file la matokeo!");
+
+                    const file = fileInput.files[0];
+                    const reader = new FileReader();
+                    btn.innerText = "Inapakia File... ⏳";
+                    btn.disabled = true;
+
+                    reader.onload = async function (e) {
+                        const payload = {
+                            action: 'uploadInternal',
+                            level: level,
+                            title: title,
+                            filename: file.name,
+                            mimeType: file.type,
+                            data: e.target.result
+                        };
+
+                        try {
+                            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+                            alert("✅ Matokeo ya " + level + " yamepakiwa!");
+                            fileInput.value = "";
+                        } catch (error) {
+                            alert("❌ Imefeli kupakia.");
+                        } finally {
+                            btn.innerText = "WEKA MATOKEO";
+                            btn.disabled = false;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+
+                // 6. FUTA DATA (DELETE)
+                async function deleteResult() {
+                    const level = document.getElementById('internal_level').value;
+                    if (!confirm("Je, una uhakika unataka kufuta matokeo ya " + level + "? Hatua hii hairudishwi!")) return;
+
+                    const payload = { action: 'deleteResult', level: level };
+
+                    try {
+                        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+                        alert("🗑️ Matokeo yamefutwa kutoka kwenye system.");
+                    } catch (e) {
+                        alert("❌ Imeshindikana kufuta.");
+                    }
+                }
+
+                // 7. TUMA DATA ZA NECTA
+                async function sendNectaData() {
+                    const btn = document.getElementById('btn_submit_necta');
+                    const data = {
+                        action: "addNecta",
+                        year: document.getElementById('necta_year').value,
+                        type: document.getElementById('necta_type').value,
+                        link: document.getElementById('necta_link').value,
+                        status: document.getElementById('necta_status').value
+                    };
+
+                    btn.innerText = "Inatuma Necta... ⏳";
+                    try {
+                        await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify(data) });
+                        alert("✅ Link ya Necta imehifadhiwa!");
+                    } catch (e) {
+                        alert("❌ Hitilafu imetokea!");
+                    } finally {
+                        btn.innerText = "🚀 CHAPA MATOKEO KWENYE SHEET";
+                    }
+                }
+            </script>
+</body>
+
+</html>

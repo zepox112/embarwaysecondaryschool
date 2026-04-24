@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embarway Hub | Assignment Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #080a0c;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #4ade80;
+            --blue: #3498db;
+            --warning: #f1c40f;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top right, #1a2a1a, var(--primary-bg));
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--accent), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+        }
+
+        #statusText {
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 1px solid var(--glass-border);
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .reminder-box {
+            background: rgba(241, 196, 15, 0.1);
+            border: 1px solid var(--warning);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .reminder-box i {
+            color: var(--warning);
+            margin-right: 10px;
+        }
+
+        .reminder-text {
+            font-size: 0.85rem;
+            color: #fceea7;
+            line-height: 1.5;
+        }
+
+        .subject-box {
+            background: var(--card-bg);
+            margin-bottom: 18px;
+            padding: 22px;
+            border-radius: 22px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .subject-box:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+        }
+
+        .subject-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+        }
+
+        .teacher-info {
+            font-size: 0.9rem;
+            margin: 12px 0 18px 0;
+            color: var(--text-dim);
+        }
+
+        .teacher-name {
+            color: var(--blue);
+            font-weight: 600;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 10px;
+            border-radius: 8px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-dl {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            color: white;
+        }
+
+        .btn-wa {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .btn-disabled {
+            opacity: 0.15;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <span id="statusText">Inapakia mfumo...</span>
+        <div class="card">
+            <h2>Embarway Hub</h2>
+            <input type="text" id="stuName" placeholder="Andika Majina Yako Matatu">
+
+            <select id="classSelect" onchange="handleClassChange()">
+                <option value="">-- Chagua Kidato --</option>
+                <option value="f1">Form One</option>
+                <option value="f2">Form Two</option>
+                <option value="f3">Form Three</option>
+                <option value="f4">Form Four</option>
+                <option value="f5">Form Five</option>
+                <option value="f6">Form Six</option>
+            </select>
+
+            <select id="streamSelect" style="display: none;" onchange="showSubjects()">
+            </select>
+        </div>
+
+        <div id="photoReminder" class="reminder-box">
+            <div class="reminder-text">
+                <i class="fas fa-lightbulb"></i>
+                <strong>ZINGATIA:</strong> Wakati wa kutuma, hakikisha unapiga picha ya majibu yako kwenye
+                <strong>mwanga mzuri</strong> ili mwalimu aweze kusahihisha kwa urahisi.
+            </div>
+        </div>
+
+        <div id="subjectList"></div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwDe8nvz7tnNOFYmWWZY-KGLHnHwtrC6VD51jguaMMcDfYZ3mGw2YKfTYc2B05zOyU/exec";
+        let teacherData = {};
+
+        async function loadTeacherData() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                teacherData = await response.json();
+                document.getElementById('statusText').innerText = "● Mfumo upo tayari";
+            } catch (e) {
+                document.getElementById('statusText').innerText = "● Hitilafu ya muunganisho";
+            }
+        }
+        loadTeacherData();
+
+        const allSubjects = {
+            f1: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
+            f2: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMPUTER SCIENCE", "HISTORIA YA TANZANIA NA MAADILI"],
+            f3: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
+            f4: ["PHYSICS", "CHEMISTRY", "BIOLOGY", "BASIC MATHEMATICS", "GEOGRAPHY", "HISTORY", "CIVICS", "ENGLISH", "KISWAHILI", "BOOK KEEPING", "COMMERCE"],
+            f5: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Literature in English 1", "Literature in English 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "Fasihi 1", "Fasihi 2", "Historia ya Tanzania na Maadili", "BAM"],
+            f6: ["History 1", "History 2", "Geography 1", "Geography 2", "Language 1", "Language 2", "Kiswahili 1", "Kiswahili 2", "Economics 1", "Economics 2", "Chemistry 1", "Chemistry 2", "Biology 1", "Biology 2", "General Studies (GS)", "BAM"]
+        };
+
+        function handleClassChange() {
+            const cls = document.getElementById('classSelect').value;
+            const streamSelect = document.getElementById('streamSelect');
+            const listDiv = document.getElementById('subjectList');
+            const reminder = document.getElementById('photoReminder');
+
+            listDiv.innerHTML = "";
+            reminder.style.display = "none";
+
+            if (!cls) {
+                streamSelect.style.display = "none";
+                return;
+            }
+
+            streamSelect.style.display = "block";
+            streamSelect.innerHTML = `<option value="">-- Chagua ${cls.includes('5') || cls.includes('6') ? 'Mchepuo (Combination)' : 'Mkondo (Stream)'} --</option>`;
+
+            if (cls.startsWith('f') && parseInt(cls[1]) <= 4) {
+                // O-Level Streams
+                ['A', 'B', 'C', 'D', 'E', 'F'].forEach(s => {
+                    streamSelect.innerHTML += `<option value="${s}">${s}</option>`;
+                });
+            } else {
+                // A-Level Combinations
+                ['HGL', 'HGK', 'HGE', 'HGLi', 'HGFa','HGE', 'HKL'].forEach(c => {
+                    streamSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                });
+            }
+        }
+
+        function showSubjects() {
+            const cls = document.getElementById('classSelect').value;
+            const strm = document.getElementById('streamSelect').value;
+            const listDiv = document.getElementById('subjectList');
+            const reminder = document.getElementById('photoReminder');
+            const name = document.getElementById('stuName').value;
+
+            if (strm && (!name || name.trim().split(" ").length < 2)) {
+                alert("Tafadhali anza kwa kuandika majina yako matatu!");
+                document.getElementById('streamSelect').value = "";
+                return;
+            }
+
+            listDiv.innerHTML = "";
+            if (!strm) {
+                reminder.style.display = "none";
+                return;
+            }
+
+            reminder.style.display = "block";
+
+            allSubjects[cls].forEach(sub => {
+                const searchId = cls.toLowerCase() + sub.toUpperCase();
+                const info = teacherData[searchId] || null;
+
+                const mwalimuYupo = info !== null;
+                const jinaMwalimu = mwalimuYupo ? info.name : "Bado hajatuma";
+                const nambaSimu = mwalimuYupo ? info.phone : "";
+                const linkKazi = mwalimuYupo ? info.link : "";
+
+                listDiv.innerHTML += `
+                <div class="subject-box">
+                    <span class="subject-name"><i class="fas fa-book-open"></i> ${sub}</span>
+                    <div class="teacher-info">
+                        <i class="fas fa-user-tie"></i> Mwalimu: <span class="teacher-name">${jinaMwalimu}</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="${linkKazi}" class="btn btn-dl ${!linkKazi ? 'btn-disabled' : ''}" target="_blank">
+                            <i class="fas fa-cloud-download-alt"></i> Pakua
+                        </a>
+                        <button class="btn btn-wa ${!mwalimuYupo ? 'btn-disabled' : ''}" 
+                                onclick="${mwalimuYupo ? `tumaWhatsApp('${sub}', '${nambaSimu}', '${cls}', '${strm}')` : ''}">
+                            <i class="fab fa-whatsapp"></i> Tuma
+                        </button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function tumaWhatsApp(sub, phone, cls, strm) {
+            const name = document.getElementById('stuName').value;
+            const label = cls.includes('5') || cls.includes('6') ? 'Mchepuo' : 'Mkondo';
+            const kidato = cls.replace('f', 'Form ');
+
+            const msg = `*KAZI YA LIKIZO - EMBARWAY*%0A--------------------------%0A*Mwanafunzi:* ${name}%0A*Darasa:* ${kidato}%0A*${label}:* ${strm}%0A*Somo:* ${sub}%0A--------------------------%0AMwalimu, nimeambatanisha picha za kazi yangu hapa chini:`;
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>

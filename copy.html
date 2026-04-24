@@ -3,30 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1100">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description"
         content="Tovuti rasmi ya Embarway Secondary School (S1159). Pakua fomu za kujiunga 2026, angalia matokeo ya NECTA.">
     <title>Embarway Secondary School | S1159 - Official Website 2026</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-
-    <link rel="apple-touch-icon" href="logo.jpg">
-
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="logo.jpg">
-    <link rel="apple-touch-icon" sizes="152x152" href="logo.jpg">
-    <link rel="apple-touch-icon" sizes="180x180" href="logo.jpg">
-    <link rel="apple-touch-icon" sizes="167x167" href="logo.jpg">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Embarway">
-
-
-    <meta name="theme-color" content="#006400">
-    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="logo.jpg">
 
     <style>
         :root {
@@ -36,37 +19,6 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --text-light: #f4f4f4;
             --accent-green: #4ade80;
-        }
-
-        html,
-        body {
-            /* Badala ya width: 100%, tunalazimisha upana wa PC */
-            width: 1100px;
-            margin: 0 auto;
-            overflow-x: visible;
-            /* Hii inaruhusu kuona sehemu ya kulia kama kioo ni kidogo */
-            position: relative;
-        }
-
-        * {
-            max-width: none !important;
-            /* Inazuia vitu visijibane vikawa nusu */
-        }
-
-        .glass-card p,
-        .glass-card h3,
-        .glass-card div {
-            white-space: normal !important;
-            /* Inaruhusu maandishi kushuka chini ndani ya kadi */
-            word-wrap: break-word;
-            /* Inazuia maneno marefu yasitoke nje ya kadi */
-            overflow: visible !important;
-        }
-
-        /* Hii inahakikisha kadi zenyewe zina urefu unaotosha maudhui yako */
-        .glass-card {
-            height: auto !important;
-            min-height: fit-content;
         }
 
         /* RESET & BASE */
@@ -86,27 +38,6 @@
             background-attachment: fixed;
             color: var(--text-light);
             scroll-behavior: smooth;
-        }
-
-        .suggestions-box {
-            position: absolute;
-            top: 65px;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.98);
-            /* Nyeusi iliyokolea ili isichanganye macho */
-            border: 1px solid var(--accent-green);
-            border-radius: 15px;
-            z-index: 9999 !important;
-            /* Lazima iwe juu ya kila kitu */
-            display: none;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-
-        .suggestion-item:hover {
-            background: var(--accent-green) !important;
-            color: black !important;
         }
 
         /* NAVIGATION */
@@ -741,40 +672,6 @@
             animation-duration: 3s;
         }
 
-        #backToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: #4ade80;
-            color: black;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            /* Inakuwa haionekani mwanzoni */
-            transition: all 0.5s ease;
-            z-index: 2000;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
-            transform: translateY(100px);
-            /* Inakaa chini ya kioo */
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            transform: translateY(0);
-            /* Inapanda juu inapotakiwa kuonekana */
-        }
-
-        #backToTop:hover {
-            background: white;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-        }
-
         .bubble:nth-child(2) {
             width: 10px;
             height: 10px;
@@ -1029,17 +926,17 @@
         </ul>
     </nav>
     <div class="search-section">
-        <div class="search-container liquid-box" style="position: relative;">
+        <div class="search-container liquid-box">
+            <div class="bubble"></div>
             <div class="bubble"></div>
             <div class="bubble"></div>
             <div class="bubble"></div>
 
             <input type="text" id="searchInput" placeholder="Tafuta hapa (mfano: matokeo, fomu, ratiba...)"
-                oninput="liveSearch()">
-
+                onkeyup="liveSearch()">
             <div id="searchSuggestions" class="suggestions-box"></div>
         </div>
-    </div>
+    </div>F
 
     <header id="nyumbani" class="hero">
         <div class="slide active" style="background-image: url('emba1.jpg');"></div>
@@ -1048,8 +945,7 @@
         <div class="slide" style="background-image: url('emba4.jpg');"></div>
         <div class="slide" style="background-image: url('emba5.jpg');"></div>
         <div class="slide" style="background-image: url('emba6.jpg');"></div>
-        <div class="slide" style="background-image: url('emba7.png');"></div>
-        <div class="slide" style="background-image: url('emba8.png');"></div>
+
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>KARIBU SHULE YA SEKONDARI EMBARWAY</h1>
@@ -1088,26 +984,6 @@
             }
         }
 
-        /* Custom Style kwa ajili ya Chatbot Icon */
-        #chatbase-bubble-button {
-            background: rgba(45, 90, 39, 0.4) !important;
-            /* Kijani ya kioo */
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
-            bottom: 25px !important;
-            right: 25px !important;
-            transition: all 0.3s ease !important;
-        }
-
-        #chatbase-bubble-button:hover {
-            transform: scale(1.1) rotate(5deg);
-            background: rgba(74, 222, 128, 0.6) !important;
-            /* Inang'aa zaidi ukigusa */
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.4) !important;
-        }
-
         /* 2. Welcome Layout */
         .welcome-section {
             display: grid;
@@ -1144,148 +1020,230 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* WHATSAPP BUBBLE - Imehamishiwa Kushoto sasa */
-        .whatsapp-liquid-link {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            /* Hapa ndipo tulibadilisha kutoka right kwenda left */
-            z-index: 2100;
-            /* Imepandishwa juu zaidi ya Back to Top button */
-        }
-
-        .glass-water-bubble {
-            width: 55px;
-            height: 55px;
-            background: rgba(37, 211, 102, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            animation: float 3s ease-in-out infinite;
-            cursor: pointer;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        #backToTop {
-            position: fixed;
-            bottom: 100px;
-            /* Hapa ndipo tumeipandisha juu ili isizibe chatbot */
-            right: 25px;
-            width: 45px;
-            height: 45px;
-            background: #4ade80;
-            color: black;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 2000;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
-            transform: translateY(100px);
-        }
     </style>
     <section id="taaluma">
         <div class="updates-bar">
-            <div class="updates-content" id="data-marquee">
-                Inapakia taarifa za punde...
+            <div class="updates-content">
+                🔥 TAARIFA ZA PUNDE: Matokeo ya Kidato cha Nne (CSEE) 2025 yametoka! Wastani wa Shule ni GPA
+                3.2920(Daraja
+                C). Hongereni wahitimu wote! &nbsp;&nbsp;&nbsp;&nbsp; 📢 USAJILI: Nafasi za kuhamia kwa Kidato cha
+                Kwanza
+                zimeisha.
             </div>
         </div>
+        </div>
 
-        <div class="main-content" style="padding-top: 40px;">
-                <div class="glass-card" style="margin-bottom: 0;">
-                    <h3 style="color: #b3d1ff;">👨‍🏫 Ujumbe wa Mkuu wa Shule</h3>
-                    <div class="headmaster-box">
-                        <img src="mkuu.jpg" alt="Mkuu wa Shule" class="headmaster-img">
-                        <div>
-                            <p style="margin: 0; font-size: 0.95rem;" id="data-mkuu-msg">
-                                "Inapakia ujumbe wa mkuu..."
-                            </p>
-                            <p style="margin-top: 10px; font-weight: bold; color: #ffb3b3;">Mkuu wa Shule Bw. Fidelis
-                                Bilaly</p>
-                        </div>
-                    </div>
+    </section>
+    <div class="main-content" style="padding-top: 40px;">
+
+        <div class="welcome-section">
+            <div class="glass-card" style="margin-bottom: 0;">
+                <h3 style="color: #ffb3b3;">✨ Neno la Mwezi</h3>
+                <div class="quote-card">
+                    "Elimu ni silaha yenye nguvu zaidi unayoweza kuitumia kubadilisha ulimwengu. Tuweke bidii katika
+                    masomo yetu mwezi huu wa Februari."
                 </div>
+                <p style="text-align: right; font-size: 0.8rem; margin-top: 10px;">— Nelson Mandela</p>
             </div>
 
-
-
-            <section id="kuhusu">
-                <h2 class="section-title">Kuhusu Sisi</h2>
-                <div class="grid-container">
-                    <div class="glass-card">
-                        <h3>Historia Yetu</h3>
-                        <p>Ilianzishwa mwaka 2000 ikiwa na lengo la kuwahudumia watoto wa jamii ya wafugaji na Waishio
-                            Ngorongoro,
-                            ikichochewa na mazingira ya kipekee ya Ngorongoro.</p>
-                    </div>
-                    <div class="glass-card">
-                        <h3>Dira na Dhima</h3>
-                        <p><strong>Dira:</strong> Kuwa kitovu cha ubora wa elimu kanda ya kaskazini.<br>
-                            <strong>Dhima:</strong> Kutoa mafunzo bora ya kitaaluma na stadi za maisha.
+            <div class="glass-card" style="margin-bottom: 0;">
+                <h3 style="color: #b3d1ff;">👨‍🏫 Ujumbe wa Mkuu wa Shule</h3>
+                <div class="headmaster-box">
+                    <img src="mkuu.jpg" alt="Mkuu wa Shule" class="headmaster-img">
+                    <div>
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            "Karibuni Embarway Secondary. Tunalenga kutoa elimu bora na malezi yenye maadili kwa vijana
+                            wetu ili waweze kuwa viongozi bora wa kesho."
+                        </p>
+                        <p style="margin-top: 10px; font-weight: bold; color: #ffb3b3;">Mkuu wa Shule Bw.Fidelis BIlaly
                         </p>
                     </div>
-                    <div class="glass-card">
-                        <h3>Mazingira</h3>
-                        <p>Shule ipo Ngorongoro - Endulen. Tunafurahia hali ya hewa ya ubaridi na ukaribu na maliasili
-                            za
-                            nchi
-                            yetu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="matokeo" class="glass-card" style="margin-top: 40px;">
+            <h2>📊 Matokeo ya Kidato cha Nne (CSEE 2025)</h2>
+            <p>Huu hapa ni muhtasari wa Ufaulu:</p>
+
+            <div class="grid">
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0; color: #52c41a;">GPA 3.0180</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wastani wa Shule (Grade C)</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Division I & II</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wanafunzi 70</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Division III & IV</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Wanafunzi 194</p>
+                </div>
+                <div class="sub-card" style="text-align: center;">
+                    <h4 style="margin: 0;">Hakuna Division 0</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="quick-links">
+            <div class="glass-card" style="text-align: center; margin-top: 20px;">
+                <h3>Matokeo ya Mtihani wa kidato cha nne 2025</h3>
+                <p>Bonyeza kitufe hapa chini kutazama matokeo ya hivi punde ya Kidato cha Nne 2025.</p>
+                <br>
+                <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
+                    class="btn-matokeo">
+                    📊 Fungua Matokeo ya 2025
+                </a>
+            </div>
+
+        </div>
+
+        <section id="kuhusu">
+            <h2 class="section-title">Kuhusu Sisi</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Historia Yetu</h3>
+                    <p>Ilianzishwa mwaka 2000 ikiwa na lengo la kuwahudumia watoto wa jamii ya wafugaji na Waishio
+                        Ngorongoro,
+                        ikichochewa na mazingira ya kipekee ya Ngorongoro.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Dira na Dhima</h3>
+                    <p><strong>Dira:</strong> Kuwa kitovu cha ubora wa elimu kanda ya kaskazini.<br>
+                        <strong>Dhima:</strong> Kutoa mafunzo bora ya kitaaluma na stadi za maisha.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3>Mazingira</h3>
+                    <p>Shule ipo Ngorongoro - Endulen. Tunafurahia hali ya hewa ya ubaridi na ukaribu na maliasili za
+                        nchi
+                        yetu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="taaluma">
+            <h2 class="section-title">Taaluma</h2>
+            <div class="grid-container">
+                <div class="glass-card">
+                    <h3>Mitaala</h3>
+                    <p>Tunatoa mchepuo wa Sayansi, Sanaa na Biashara kwa O-Level na A-Level.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3>(Combinations)</h3>
+                    <div class="combos">
+                        <span class="badge">HGL</span> <span class="badge">HGK</span>
+                        <span class="badge">HGE</span> <span class="badge">HGLi</span>
+                        <span class="badge">CBG</span> <span class="badge">HKL</span>
+                        <span class="badge">HGFa</span>
                     </div>
                 </div>
-            </section>
+                <div class="glass-card">
+                    <h3>Vifaa vya Kujifunzia</h3>
+                    <p>Tuna Maktaba ya kisasa na Maabara tatu za Sayansi zilizosheheni vifaa vya kutosha.</p>
+                </div>
 
-            <section id="taaluma">
-                <h2 class="section-title">Taaluma</h2>
-                <div class="grid-container">
-                    <div class="glass-card">
-                        <h3>Mitaala</h3>
-                        <p>Tunatoa mchepuo wa Sayansi, Sanaa na Biashara kwa O-Level na A-Level.</p>
-                    </div>
+            </div>
+    </div>
+    </section>
+    <section id="Matokeo">
+        <div class="grid">
+            <h2 class="section-title">Matokeo ya Mitihani ya shule</h2>
 
-                    <div class="glass-card">
-                        <h3>(Combinations)</h3>
-                        <div class="combos">
-                            <span class="badge">HGL</span> <span class="badge">HGK</span>
-                            <span class="badge">HGE</span> <span class="badge">HGLi</span>
-                            <span class="badge">CBG</span> <span class="badge">HKL</span>
-                            <span class="badge">HGFa</span>
+            <div class="glass-card"
+                style="flex: 1; min-width: 320px; text-align: center; border-top: 5px solid #ffcc00; background: rgba(255, 204, 0, 0.03);">
+                <h3 style="color: #ffcc00; margin-bottom: 5px;">Mitihani ya Shule</h3>
+                <p style="font-size: 0.8rem; margin-bottom: 15px; opacity: 0.8;">Matokeo ya Muhula/Mwisho wa
+                    Mwaka</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <a href="#" class="btn-internal">Form 1 - View</a>
+                    <a href="#" class="btn-internal">Form 2 - View</a>
+                    <a href="#" class="btn-internal">Form 3 - View</a>
+                    <a href="#" class="btn-internal">Form 4 - View</a>
+                    <a href="#" class="btn-internal">Form 5 - View</a>
+                    <a href="#" class="btn-internal">Form 6 - View</a>
+                </div>
+                <p style="font-size: 0.7rem; margin-top: 12px; color: #ffcc00;">*Haya ni matokeo ya ndani ya
+                    shule (Shule ya sekondary Embarway)</p>
+            </div>
+        </div>
+        <h2 class="section-title">Matokeo ya Mitihani Ya kitaifa</h2>
+
+        <div
+            style="display: flex; flex-direction: row; gap: 20px; justify-content: center; flex-wrap: wrap; width: 100%;">
+
+            <div class="glass-card"
+                style="flex: 1; min-width: 300px; text-align: center; border-top: 5px solid var(--accent-green);">
+                <h3 style="color: var(--accent-green); margin-bottom: 15px;">Msimu wa Matokeo 2025</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Tazama ufaulu wa hivi punde kwa shule yetu
+                    (S1159).
+                </p>
+                <div
+                    style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: stretch; width: 100%;">
+
+                    <div class="glass-card"
+                        style="flex: 1; min-width: 300px; max-width: 450px; text-align: center; padding: 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <h3 style="color: #fff; margin-bottom: 15px;">Matokeo ya Mitihani 2025</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="https://onlinesys.necta.go.tz/results/2025/ftna/results/S1159.htm" target="_blank"
+                                class="btn-necta">
+                                📝 Kidato cha Pili (FTNA) 2025
+                            </a>
+                            <a href="https://matokeo.necta.go.tz/results/2025/csee/results/s1159.htm" target="_blank"
+                                class="btn-necta">
+                                📊 Kidato cha Nne (CSEE) 2025
+                            </a>
+                            <a href="https://onlinesys.necta.go.tz/results/2025/acsee/results/s1159.htm" target="_blank"
+                                class="btn-necta" style="border-color: #fff; color: #fff;">
+                                🎓 Kidato cha Sita (ACSEE) 2025
+                            </a>
                         </div>
                     </div>
-                    <div class="glass-card">
-                        <h3>Vifaa vya Kujifunzia</h3>
-                        <p>Tuna Maktaba ya kisasa na Maabara tatu za Sayansi zilizosheheni vifaa vya kutosha.</p>
+
+                    <div class="glass-card"
+                        style="flex: 1; min-width: 300px; max-width: 450px; text-align: center; border-top: 5px solid #888; padding: 20px; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <h3 style="color: #ccc; margin-bottom: 15px;">Kumbukumbu za Matokeo 2024</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="https://onlinesys.necta.go.tz/results/2024/ftna/results/S1159.htm" target="_blank"
+                                class="btn-necta-old">
+                                📝 Kidato cha Pili (FTNA) 2024
+                            </a>
+                            <a href="https://onlinesys.necta.go.tz/results/2024/csee/results/s1159.htm" target="_blank"
+                                class="btn-necta-old">
+                                📊 Kidato cha Nne (CSEE) 2024
+                            </a>
+                            <a href="https://onlinesys.necta.go.tz/results/2024/acsee/results/s1159.htm" target="_blank"
+                                class="btn-necta-old">
+                                🎓 Kidato cha Sita (ACSEE) 2024
+                            </a>
+                        </div>
                     </div>
 
                 </div>
-        </div>
-    </section>
-    <section id="Matokeo" style="text-align: center; padding: 50px 5%;">
-        <div class="glass-card">
-            <h2 class="section-title">📊 Matokeo ya Mitihani na fomu za kujiunga</h2>
-            <p>Angalia matokeo ya kitaifa (NECTA) na matokeo ya ndani ya shule pamoja na fomu za kujiunga</p>
-            <br>
-            <a href="matokeo.html" class="btn-matokeo">Fungua Ukurasa wa Matokeo na fomu</a>
-        </div>
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 20px;">
+
+                    <div class="glass-card box border-blue" style="max-width: 400px; width: 100%; text-align: center;">
+                        <h3 style="color: #3498db; margin-top: 0;">MOCK 2025</h3>
+                        <p class="box-subtitle">Matokeo ya Majaribio ya Mkoa/Kanda</p>
+
+                        <div class="button-stack"
+                            style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+                            <a href="https://mock.famnet.co.tz/results/view/SS664f3889f358a_NC_136?v=1770032456"
+                                target="_blank" class="btn btn-download">
+                                Mock Kidato cha Nne
+                            </a>
+                            <a href="https://drive.google.com/file/d/1lv31sSma0JkkRveXu3lbDm_2-WI26IKo/view"
+                                target="_blank" class="btn btn-download">
+                                Mock Kidato cha Sita
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
     </section>
 
     <section id="kalenda">
@@ -1357,88 +1315,72 @@
         </div>
     </section>
     <section id="usajili" style="padding: 40px 20px;">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Usajili</h2>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Usajili na Fomu za Kujiunga</h2>
 
-        <div style="text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid var(--glass-border);">
-            <p style="font-size: 0.9rem; margin-bottom: 15px; color: #ddd;">Ukishasoma maelekezo ya kujiunga,
-                bonyeza hapa kuanza maombi:</p>
+        <div class="results-container"
+            style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: stretch;">
 
-            <a href="apply.html" target="_blank" class="btn-apply-now">
-                🚀 JIUNGE SASA (APPLY NOW)
-            </a>
-        </div>
-
-        <style>
-            /* Style ya kitufe cha Jiunge Sasa */
-            .btn-apply-now {
-                background: var(--accent-green);
-                color: var(--dark-grey) !important;
-                padding: 18px 40px;
-                border-radius: 50px;
-                text-decoration: none;
-                font-weight: 800;
-                font-size: 1.1rem;
-                display: inline-block;
-                transition: all 0.4s ease;
-                box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
-                border: 2px solid transparent;
-            }
-
-            .btn-apply-now:hover {
-                background: transparent;
-                color: var(--accent-green) !important;
-                border: 2px solid var(--accent-green);
-                transform: translateY(-5px);
-                box-shadow: 0 8px 25px rgba(74, 222, 128, 0.5);
-            }
-        </style>
-        </div>
-    </section>
-    <section id="holiday-link-section" style="padding: 40px 5%;">
-        <div class="glass-card" style="
-        background: rgba(45, 90, 39, 0.2); 
-        border: 2px solid var(--accent-green); 
-        text-align: center; 
-        padding: 40px; 
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transition: 0.4s ease;">
-
-            <h2 style="color: var(--accent-green); margin-bottom: 15px; font-size: 2rem;">📚 Holiday Packages 2026
-            </h2>
-            <p style="margin-bottom: 25px; font-size: 1.1rem; color: #ccc;">
-                Wanafunzi wa Kidato cha 1 hadi cha 6 wanaweza kupakua na kutuma kazi za likizo hapa kwa urahisi.
-            </p>
-
-            <a href="holiday_packages.html" class="btn-matokeo" style="
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            padding: 18px 40px;
-            font-size: 1rem;
-            display: inline-block;">
-                Fungua Ukurasa wa Kazi za Likizo
-            </a>
-        </div>
-        <div style="padding: 0 5%; margin: 20px 0;">
-            <div
-                style="background: rgba(74, 222, 128, 0.05); border: 1px solid rgba(74, 222, 128, 0.2); border-radius: 15px; padding: 15px 25px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(10px);">
-                <div style="display:flex; align-items:center; gap:15px;">
-                    <div style="background:rgba(74,222,128,0.1); padding:10px; border-radius:10px; color:#4ade80">
-                        <svg style="width:28px;height:28px" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M12,6.25C10.83,5.48 9.25,5 7.5,5C5.75,5 4.17,5.48 3,6.25V19.25C4.17,18.48 5.75,18 7.5,18C9.25,18 10.83,18.48 12,19.25C13.17,18.48 14.75,18 16.5,18C18.25,18 19.83,18.48 21,19.25V6.25C19.83,5.48 18.25,5 16.5,5C14.75,5 13.17,5.48 12,6.25Z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4
-                            style="font-size:13px; text-transform:uppercase; letter-spacing:1px; color: white; margin:0;">
-                            Maktaba ya shule ya Mtandaoni</h4>
-                        <p style="font-size:10px; color:#aaa; margin:0;">Soma vitabu 100+ vya O-Level & A-Level.</p>
-                    </div>
+            <div class="glass-card result-box border-blue"
+                style="flex: 1; min-width: 300px; max-width: 500px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; padding: 20px;">
+                <div>
+                    <h3 style="color: #3498db;">Kidato cha Kwanza (Form 1)</h3>
+                    <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha kwanza.</p>
                 </div>
-                <a href="book.html"
-                    style="background:#4ade80; color:black; padding:8px 15px; border-radius:8px; font-size:11px; font-weight:900; text-decoration:none; text-transform:uppercase; transition: 0.3s;">Fungua</a>
+                <div class="button-stack" style="margin-top: 20px;">
+                    <a href="F1- FOMU YA KUJIUNGA 2026.pdf" target="_blank" class="btn-download"
+                        style="display: block; text-decoration: none;">
+                        📥 Pakua Joining Instruction (F1)
+                    </a>
+                </div>
             </div>
+
+            <div class="glass-card result-box border-blue"
+                style="flex: 1; min-width: 300px; max-width: 500px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; padding: 20px;">
+                <div>
+                    <h3 style="color: #3498db;">Kidato cha tano (Form 5)</h3>
+                    <p class="box-subtitle">Maelekezo ya kujiunga kwa wanafunzi wapya wa kidato cha tano.</p>
+                </div>
+                <div class="button-stack" style="margin-top: 20px;">
+                    <a href="form_five_joining_2026.pdf" target="_blank" class="btn-download"
+                        style="display: block; text-decoration: none;">
+                        📥 Pakua Joining Instruction (F5)
+                    </a>
+                </div>
+            </div>
+            <div
+                style="text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid var(--glass-border);">
+                <p style="font-size: 0.9rem; margin-bottom: 15px; color: #ddd;">Ukishasoma maelekezo ya kujiunga,
+                    bonyeza hapa kuanza maombi:</p>
+
+                <a href="apply.html" target="_blank" class="btn-apply-now">
+                    🚀 JIUNGE SASA (APPLY NOW)
+                </a>
+            </div>
+
+            <style>
+                /* Style ya kitufe cha Jiunge Sasa */
+                .btn-apply-now {
+                    background: var(--accent-green);
+                    color: var(--dark-grey) !important;
+                    padding: 18px 40px;
+                    border-radius: 50px;
+                    text-decoration: none;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    display: inline-block;
+                    transition: all 0.4s ease;
+                    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+                    border: 2px solid transparent;
+                }
+
+                .btn-apply-now:hover {
+                    background: transparent;
+                    color: var(--accent-green) !important;
+                    border: 2px solid var(--accent-green);
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.5);
+                }
+            </style>
         </div>
     </section>
     <section id="faq-section" style="padding: 60px 5%;">
@@ -1457,8 +1399,7 @@
                         Embarway Secondary School inapatikana wilayani Ngorongoro, mkoa wa Arusha. Namna ya kufika
                         shule: Shule ya Sekondari Embarway ipo ndani ya Hifadhi ya
                         mamlaka ya Ngorongoro umbali wa km. 283 kusini kutoka Makao Makuu ya Wilaya ya
-                        Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya Karatu
-                        (Karatu
+                        Ngorongoro (Loliondo). Pia kutokea wilaya ya karatu kutoka Stendi ya Mabasi ya Karatu (Karatu
                         Bus Station) kuelekea Shule ya Sekondari Embarway iliyopo Endulen, Ngorongoro ni takriban
                         kilometa 67.8. Ambapo utapanda magari yanayoelekea embarway na yatakufikisha shule moja kwa
                         moja. Kwa maelezo zaidi, tafadhali wasiliana nasi kupitia namba zetu za simu au barua pepe
@@ -1475,8 +1416,7 @@
                 <div class="faq-content">
                     <div class="faq-inner">
                         Kwa kidato cha tano na sita, tunatoa michepuo ya Sayansi (CBG) na Sanaa/Biashara
-                        (HGE, HGL, HGK, HKL, HGFa, HGLi). Kwa kidato cha kwanza hadi cha nne, tunafundisha masomo
-                        yote
+                        (HGE, HGL, HGK, HKL, HGFa, HGLi). Kwa kidato cha kwanza hadi cha nne, tunafundisha masomo yote
                         ya msingi ya
                         kitaifa.
                     </div>
@@ -1491,12 +1431,10 @@
                 <div class="faq-content">
                     <div class="faq-inner">
                         Ada zenu ni nafuu na zinaweza kulipwa kwa awamu (kila muhula). Kwa maelezo zaidi ya viwango
-                        vya ada, tafadhali download "Joining Instructions ya kidato cha tano" hapo juu au wasiliana
-                        na
+                        vya ada, tafadhali download "Joining Instructions ya kidato cha tano" hapo juu au wasiliana na
                         mhasibu kupitia
                         namba zetu za simu.
                     </div>
-
                 </div>
             </div>
 
@@ -1577,186 +1515,115 @@
             card.classList.toggle('active');
         }
     </script>
-    <script>
-        window.onscroll = function () {
-            let btn = document.getElementById("backToTop");
-            // Mshale utatokea ukishashuka chini zaidi ya pixel 400
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-                btn.classList.add("show");
-            } else {
-                btn.classList.remove("show");
-            }
-        };
-    </script>
 
-    <section id="mawasiliano" style="padding: 60px 5%;">
-        <h2 class="section-title">📍 Mahali Tulipo & Mawasiliano</h2>
 
-        <div class="grid-container"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+    <section id="mawasiliano">
+        <h2 class="section-title">Mawasiliano</h2>
+        <div class="grid-container">
 
-            <div class="glass-card"
-                style="padding: 10px; overflow: hidden; height: 500px; position: relative; border-top: 5px solid var(--accent-green);">
-                <iframe width="100%" height="100%" frameborder="0"
-                    style="border:0; border-radius: 12px; filter: contrast(1.1) brightness(0.9);"
-                    src="https://maps.google.com/maps?q=Embarway%20Secondary%20School&t=k&z=16&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen>
-                </iframe>
+            <div class="glass-card">
+                <h3>Ofisi Yetu</h3>
+                <p>📍 TANZANIA, ARUSHA,NGORONGORO</p>
+                <p>📞 +255 755 990 912 MKUU WA SHULE</p>
+                <p>📞 +255 754 088 341 MAKAMU MKUU WA SHULE</p>
+                <p>📞 +255 755 702 037 OFISI YA MALEZI</p>
+                <p>📞 +255 783 243 745 MUHASIBU WA SHULE</p>
 
-                <a href="https://maps.google.com/?cid=2534364619776670586&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ"
-                    target="_blank"
-                    style="position: absolute; bottom: 25px; left: 25px; background: #2563eb; color: white; padding: 10px 18px; border-radius: 30px; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; border: 1px solid rgba(255,255,255,0.2);">
-                    📍 <span>Tazama kwenye Ramani</span>
-                </a>
-            </div>
-
-            <div class="glass-card"
-                style="display: flex; flex-direction: column; gap: 15px; border-top: 5px solid #800000;">
-                <h3
-                    style="color: var(--accent-green); margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                    Viongozi na Ofisi</h3>
-
+                <br>
                 <div
-                    style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px;">
-                    <span style="font-size: 1.2rem;">📍</span>
-                    <p style="margin: 0; font-weight: 600; letter-spacing: 1px;">TANZANIA, ARUSHA, NGORONGORO</p>
+                    style="height: 200px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15945.834458394!2d35.26615555!3d-3.19792445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183362eaec2424f5%3A0x8226b2b2a696a281!2sEndulen!5e0!3m2!1sen!2stz!4v1700000000000!5m2!1sen!2stz"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-
-                <div
-                    style="display: flex; align-items: center; gap: 15px; border-left: 3px solid var(--accent-green); padding-left: 15px;">
-                    <span style="font-size: 1.2rem;">📞</span>
-                    <div>
-                        <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Mkuu wa Shule</p>
-                        <p style="margin: 0; font-weight: bold; color: #f4f4f4;">+255 755 990 912</p>
-                    </div>
-                </div>
-
-                <div
-                    style="display: flex; align-items: center; gap: 15px; border-left: 3px solid var(--accent-green); padding-left: 15px;">
-                    <span style="font-size: 1.2rem;">📞</span>
-                    <div>
-                        <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Makamu Mkuu wa Shule</p>
-                        <p style="margin: 0; font-weight: bold; color: #f4f4f4;">+255 754 088 341</p>
-                    </div>
-                </div>
-
-                <div
-                    style="display: flex; align-items: center; gap: 15px; border-left: 3px solid var(--accent-green); padding-left: 15px;">
-                    <span style="font-size: 1.2rem;">📞</span>
-                    <div>
-                        <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Ofisi ya Malezi</p>
-                        <p style="margin: 0; font-weight: bold; color: #f4f4f4;">+255 755 702 037</p>
-                    </div>
-                </div>
-
-                <div
-                    style="display: flex; align-items: center; gap: 15px; border-left: 3px solid var(--accent-green); padding-left: 15px;">
-                    <span style="font-size: 1.2rem;">📞</span>
-                    <div>
-                        <p style="margin: 0; font-size: 0.85rem; opacity: 0.7;">Muhasibu wa Shule</p>
-                        <p style="margin: 0; font-weight: bold; color: #f4f4f4;">+255 783 243 745</p>
-                    </div>
-                </div>
-
-                <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
-
-                <a href="https://wa.me/255755990912" class="btn-matokeo" style="text-align: center; font-size: 0.9rem;">
-                    💬 WhatsApp Mkuu wa Shule
-                </a>
-            </div>
-        </div>
     </section>
-    <div id="installContainer" style="display: none; text-align: center; padding: 20px;">
-        <button id="btnInstall"
-            style="background-color: #006400; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 10px;">
-            📲 Install Embarway App
-        </button>
-    </div>
+
+
     <footer>
         <p>&copy; 2026 Shule ya Sekondari Emabarway. Haki zote zimehifadhiwa.</p>
     </footer>
+
     <script>
-        /**
-         * EMBARWAY SMART SEARCH SYSTEM v2.0
-         * Inatumia RAM ndogo, haipandishi joto simu.
-         */
+        // Hii ni function ya slideshow uliyokuwa nayo awali (Iache kama ipo)
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 4500);
+        }
 
-        function liveSearch() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const suggestionsBox = document.getElementById('searchSuggestions');
+        // --- HII NDIO FUNCTION MPYA YA WHATSAPP ---
+        function sendToWhatsApp() {
+            const phoneNumber = "255754088341"; // Namba yako ya Endulen
+            const name = document.getElementById('senderName').value;
+            const message = document.getElementById('senderMessage').value;
 
-            // Database ya maneno muhimu yaliyopo kwenye HTML yako
-            const searchData = [
-                { name: "Matokeo ya NECTA", link: "#matokeo", tags: "exams, mitihani, necta, matokeo, ufaulu" },
-                { name: "Fomu ya Kujiunga 2026", link: "#usajili", tags: "joining instructions, fomu, usajili, kujiunga, admission" },
-                { name: "Mkuu wa Shule (Bw. Fidelis)", link: "#nyumbani", tags: "headmaster, fidelis bilaly, ujumbe, mkuu" },
-                { name: "Updates za Shule", link: "#updates", tags: "habari, taarifa, updates, punde" },
-                { name: "Ratiba na Kalenda", link: "#kalenda", tags: "ratiba, kalenda, masomo, likizo, saa" },
-                { name: "Nafasi za Kuhamia", link: "#usajili", tags: "transfer, kuhamia, kidato cha kwanza, form one" },
-                { name: "Taaluma (Academics)", link: "#taaluma", tags: "masomo, walimu, taaluma, elimu" },
-                { name: "Mawasiliano", link: "#mawasiliano", tags: "simu, email, whatsapp, namba, mahali" },
-                { name: "Ramadhan Kareem", link: "#updates", tags: "ramadhani, waislamu, ujumbe" },
-                { name: "Neno la Mandela", link: "#nyumbani", tags: "nelson mandela, neno la mwezi, elimu silaha" }
-            ];
-
-            // Safisha box kila unapoandika herufi mpya
-            suggestionsBox.innerHTML = '';
-
-            if (input.trim() === "") {
-                suggestionsBox.style.display = 'none';
+            if (name.trim() === "" || message.trim() === "") {
+                alert("Tafadhali jaza jina na ujumbe kabla ya kutuma.");
                 return;
             }
 
-            // Kuchuja (Filtering)
-            const matches = searchData.filter(item => {
-                return item.name.toLowerCase().includes(input) ||
-                    item.tags.toLowerCase().includes(input);
-            });
+            // Tunatengeneza maandishi yatakayoonekana kule WhatsApp
+            const text = "Habari, naitwa " + name + ". " + message;
+            const encodedText = encodeURIComponent(text);
+            const url = "https://wa.me/" + phoneNumber + "?text=" + encodedText;
 
-            if (matches.length > 0) {
-                suggestionsBox.style.display = 'block';
+            // Inafungua WhatsApp kwenye tab mpya
+            window.open(url, '_blank');
+        }
+        const searchData = [
+            { name: "Matokeo 2025 (NECTA)", link: "#taaluma" },
+            { name: "Matokeo 2024 (NECTA)", link: "#taaluma" },
+            { name: "Matokeo ya Ndani (Form 1-6)", link: "#taaluma" },
+            { name: "Ratiba ya Shule / Kalenda", link: "#kalenda" },
+            { name: "Mahali Shule Ilipo (Ramani)", link: "#mawasiliano" },
+            { name: "Mawasiliano / Simu / WhatsApp", link: "#mawasiliano" },
+            { name: "Fomu ya Usajili / Joining Instructions", link: "#usajili-section" },
+            { name: "Combinations / Michepuo", link: "#kuhusu" },
+            { name: "Fomu ya Kujiunga Kidato cha Kwanza (Form One Joining)", link: "#usajili-section" },
+            { name: "Joining Instructions", link: "#usajili-section" },
+            { name: "F1- FOMU YA KUJIUNGA 2026", link: "#usajili-section" },
+            { name: "Fomu ya Kujiunga Form Five (F5)", link: "#usajili-section" },
+        ];
 
-                matches.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'suggestion-item';
-                    div.style.padding = '12px 20px';
-                    div.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
-                    div.style.cursor = 'pointer';
-                    div.style.transition = '0.3s';
-                    div.innerHTML = `<span style="color: #4ade80;">🔍</span> ${item.name}`;
+        function liveSearch() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let box = document.getElementById('searchSuggestions');
+            box.innerHTML = "";
 
-                    // Action ya kubonyeza
-                    div.onclick = function () {
-                        // Funga mapendekezo
-                        suggestionsBox.style.display = 'none';
-                        document.getElementById('searchInput').value = item.name;
+            if (input.length > 0) {
+                let results = searchData.filter(item => item.name.toLowerCase().includes(input));
 
-                        // Nenda kwenye sehemu husika kwa "smooth motion"
-                        const target = document.querySelector(item.link);
-                        if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    };
-
-                    // Rangi ikiguswa (Hover effect)
-                    div.onmouseover = () => div.style.backgroundColor = 'rgba(74, 222, 128, 0.2)';
-                    div.onmouseout = () => div.style.backgroundColor = 'transparent';
-
-                    suggestionsBox.appendChild(div);
-                });
+                if (results.length > 0) {
+                    box.style.display = "block";
+                    results.forEach(result => {
+                        let div = document.createElement('div');
+                        div.className = "suggestion-item";
+                        div.innerHTML = result.name;
+                        div.onclick = function () {
+                            window.location.href = result.link;
+                            box.style.display = "none";
+                            document.getElementById('searchInput').value = "";
+                        };
+                        box.appendChild(div);
+                    });
+                } else {
+                    box.style.display = "none";
+                }
             } else {
-                // Kama hakuna kilichopatikana
-                suggestionsBox.style.display = 'block';
-                suggestionsBox.innerHTML = '<div style="padding:15px; color:#ffb3b3;">Samahani, hatujapata ulichotafuta...</div>';
+                box.style.display = "none";
             }
         }
 
-        // Funga box la search mgeni akibonyeza nje
-        document.addEventListener('click', function (event) {
-            const searchArea = document.querySelector('.search-container');
-            const suggestionsBox = document.getElementById('searchSuggestions');
-            if (!searchArea.contains(event.target)) {
-                suggestionsBox.style.display = 'none';
+        // Kufunga box la search ukibonyeza kwingine
+        document.addEventListener('click', function (e) {
+            if (!document.getElementById('searchSuggestions').contains(e.target)) {
+                document.getElementById('searchSuggestions').style.display = "none";
             }
         });
     </script>
@@ -1765,159 +1632,6 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
         </div>
     </a>
-    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
-        </svg>
-    </button>
-    <script>
-        // 1. Sajili Service Worker (sw.js)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker: Imesajiliwa kikamilifu'))
-                    .catch(err => console.log('Service Worker: Imefeli', err));
-            });
-        }
-
-        // 2. Kamata tukio la ku-install (Before Install Prompt)
-        let deferredPrompt;
-        const installContainer = document.getElementById('installContainer');
-        const btnInstall = document.getElementById('btnInstall');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Zuia browser isitoe pop-up yake yenyewe
-            e.preventDefault();
-            // Hifadhi tukio ili tulitumie baadaye
-            deferredPrompt = e;
-
-            // Onyesha kitufe chako cha "Install" sasa
-            if (installContainer) {
-                installContainer.style.display = 'block';
-            }
-
-            console.log("Mfumo wa ku-install uko tayari!");
-        });
-
-        // 3. Shughulikia kitendo cha kubonyeza kitufe cha Install
-        if (btnInstall) {
-            btnInstall.addEventListener('click', async () => {
-                if (!deferredPrompt) return;
-
-                // Onyesha lile boksi la Install la simu/browser
-                deferredPrompt.prompt();
-
-                // Subiri jibu la mtumiaji (Kama amekubali au amekataa)
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`Mtumiaji amechagua: ${outcome}`);
-
-                // Safisha deferredPrompt - haiwezi kutumika tena baada ya hapa
-                deferredPrompt = null;
-
-                // Ficha kitufe chetu
-                if (installContainer) {
-                    installContainer.style.display = 'none';
-                }
-            });
-        }
-
-        // 4. Ficha kitufe kama tayari App imeshawekwa (Installed)
-        window.addEventListener('appinstalled', (evt) => {
-            console.log('Asante! Embarway App imewekwa kwenye home screen.');
-            if (installContainer) {
-                installContainer.style.display = 'none';
-            }
-        });
-    </script>
-    <script>
-        // Link yako ya Google Apps Script
-        const API_URL = 'https://script.google.com/macros/s/AKfycbwBW_ZuPLEt7k5yGMVPv9l2rga31RN2kfXyD109BmIWyFef0tY7a-nrAIKD5hqyib2q/exec';
-        const CACHE_KEY = 'embarway_website_data';
-
-        // 1. Kazi ya kuonyesha data kwenye HTML
-        function onyeshaDataKwenyeUkurasa(data) {
-            if (!data || data.length < 7) return;
-
-            // Marquee (B2)
-            document.getElementById('data-marquee').innerText = data[0];
-
-            // Neno la Mwezi (B3) & Msemaji (B4)
-            document.getElementById('data-quote').innerText = `"${data[1]}"`;
-            document.getElementById('data-author').innerText = `— ${data[2]}`;
-
-            // Ujumbe wa Mkuu (B5)
-            document.getElementById('data-mkuu-msg').innerText = `"${data[3]}"`;
-
-            // Matokeo (B6, B7, B8)
-            document.getElementById('data-gpa').innerText = `GPA ${data[4]}`;
-            document.getElementById('data-div12').innerText = `Wanafunzi ${data[5]}`;
-            document.getElementById('data-div34').innerText = `Wanafunzi ${data[6]}`;
-        }
-
-        // 2. Kazi ya kuvuta data mpya
-        async function vutaDataKutokaSheet() {
-            try {
-                // Fetch data mpya
-                const response = await fetch(API_URL, { cache: "no-cache" });
-                const data = await response.json();
-
-                if (data && data.length >= 7) {
-                    // Hifadhi data mpya kwenye LocalStorage
-                    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-
-                    // Update ukurasa na data mpya kabisa
-                    onyeshaDataKwenyeUkurasa(data);
-                    console.log("Data imepakiwa na kuhifadhiwa: " + new Date().toLocaleTimeString());
-                }
-            } catch (error) {
-                console.error("Tatizo la mtandao wakati wa ku-update:", error);
-            }
-        }
-
-        // 3. Utaratibu wa kuanza (Startup logic)
-        function anzishaMfumo() {
-            // Jaribu kupata data kutoka LocalStorage kwanza ili iwe haraka
-            const cachedData = localStorage.getItem(CACHE_KEY);
-            if (cachedData) {
-                console.log("Inapakia kutoka kwenye Local Storage...");
-                onyeshaDataKwenyeUkurasa(JSON.parse(cachedData));
-            }
-
-            // Kisha vuta data mpya kutoka kwenye sheet (background update)
-            vutaDataKutokaSheet();
-        }
-
-        // Run mara ya kwanza
-        anzishaMfumo();
-
-        // Iji-run yenyewe kila baada ya dakika 5
-        setInterval(vutaDataKutokaSheet, 300000); 
-    </script>
-    <script>
-        (function () {
-            if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-                window.chatbase = (...arguments) => {
-                    if (!window.chatbase.q) { window.chatbase.q = [] }
-                    window.chatbase.q.push(arguments)
-                };
-                window.chatbase = new Proxy(window.chatbase, {
-                    get(target, prop) {
-                        if (prop === "q") { return target.q }
-                        return (...args) => target(prop, ...args)
-                    }
-                })
-            }
-            const onLoad = function () {
-                const script = document.createElement("script");
-                script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "QXDYf6ffjtiFCs0Y9KLH4";
-                script.domain = "www.chatbase.co";
-                document.body.appendChild(script)
-            };
-            if (document.readyState === "complete") { onLoad() }
-            else { window.addEventListener("load", onLoad) }
-        })();
-    </script>
 </body>
 
 </html>
