@@ -1056,11 +1056,12 @@
         </div>
         <ul id="navMenu">
             <li><a href="#nyumbani" class="active" onclick="closeMenu()">Home</a></li>
-            <li><a href="#kuhusu" onclick="closeMenu()">Kuhusu</a></li>
-            <li><a href="#taaluma" onclick="closeMenu()">Taaluma</a></li>
-            <li><a href="#matokeo" onclick="closeMenu()">Matokeo</a></li>
-            <li><a href="#kalenda" onclick="closeMenu()">Ratiba</a></li>
-            <li><a href="#usajili" onclick="closeMenu()">Usajili</a></li>
+            <li><a href="#kuhusu" onclick="closeMenu()">Kuhusu Shule</a></li>
+            <li><a href="#taaluma" onclick="closeMenu()">Mitaala & Taaluma</a></li>
+            <li><a href="#matokeo" onclick="closeMenu()">Matokeo ya Mitihani</a></li>
+            <li><a href="#kalenda" onclick="closeMenu()">Kalenda & Ratiba</a></li>
+            <li><a href="#usajili" onclick="closeMenu()">Usajili & Nyaraka</a></li>
+            <li><a href="#faq-section" onclick="closeMenu()">Maswali (FAQs)</a></li>
             <li><a href="#mawasiliano" onclick="closeMenu()">Mawasiliano</a></li>
         </ul>
     </nav>
@@ -1380,45 +1381,40 @@
             </div>
         </div>
     </section>
-
-    <!-- STYLE MPYA YA USAJILI NA MAKTABA (Weka kwenye <style> au <head> ya tovuti yako) -->
+    <!-- MWONEKANO MPYA NA WA KISASA (WEKA KWENYE <style> YA TOVUTI YAKO) -->
     <style>
         .usajili-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
-        .premium-card {
+        .modern-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 30px 22px;
+            padding: 30px 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Hover effect ya kadi za usajili (Green Glow) */
-        .premium-card:hover {
+        /* Efekti ya kuwaka ikiguswa na kipanya */
+        .modern-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(74, 222, 128, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(74, 222, 128, 0.15);
             background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(74, 222, 128, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(74, 222, 128, 0.15);
         }
 
-        /* Hover maalum kwa ajili ya Maktaba (Blue Glow) */
-        .library-accent:hover {
-            border-color: rgba(52, 152, 219, 0.5);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(52, 152, 219, 0.2);
-        }
-
-        .premium-card h3 {
-            font-size: 1.25rem;
+        .modern-card h3 {
+            font-size: 1.2rem;
             color: #fff;
             margin-bottom: 12px;
             display: flex;
@@ -1426,23 +1422,21 @@
             gap: 10px;
         }
 
-        .premium-card p {
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.65);
+        .modern-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
-        /* Staili mpya za Vitufe vya Kupakulia (Download Buttons) */
-        .btn-premium-download {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 13px;
+        /* Vitufe vya kadi za kawaida */
+        .btn-card-action {
+            display: block;
+            text-align: center;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
-            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
@@ -1450,162 +1444,169 @@
             transition: 0.3s ease;
         }
 
-        .btn-premium-download:hover {
-            background: #fff;
+        .modern-card:hover .btn-card-action {
+            background: #4ade80;
             color: #1a1c1e;
-            border-style: solid;
-            border-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            border-color: #4ade80;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
         }
 
-        /* Kitufe cha Maktaba */
+        /* Staili ya kadi maalum ya Maktaba na Likizo */
         .btn-library {
-            background: rgba(52, 152, 219, 0.1);
+            border-color: rgba(52, 152, 219, 0.4);
             color: #3498db;
-            border: 1px solid rgba(52, 152, 219, 0.4);
         }
 
-        .btn-library:hover {
+        .modern-card:hover .btn-library {
             background: #3498db;
             color: #fff;
             border-color: #3498db;
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
         }
 
-        /* Ubao wa kidijitali (Digital Board) */
-        .digital-board-cool {
-            background: linear-gradient(145deg, rgba(20, 20, 20, 0.8), rgba(10, 30, 15, 0.9));
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            text-align: center;
+        .btn-holiday {
+            border-color: rgba(241, 196, 15, 0.4);
+            color: #f1c40f;
         }
 
-        .glow-text-new {
+        .modern-card:hover .btn-holiday {
+            background: #f1c40f;
+            color: #1a1c1e;
+            border-color: #f1c40f;
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        /* Digital Board Mapambo */
+        .digital-board-modern {
+            background: linear-gradient(145deg, rgba(128, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+            border: 1px solid rgba(255, 0, 0, 0.15);
+        }
+
+        .digital-board-modern:hover {
+            border-color: rgba(255, 62, 62, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 62, 62, 0.15);
+        }
+
+        .glow-text-modern {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #4ade80;
-            text-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
+            color: #ff3e3e;
+            text-shadow: 0 0 15px rgba(255, 62, 62, 0.6);
+            text-align: center;
             letter-spacing: 2px;
         }
 
-        .scoreboard-container {
+        .scoreboard-modern {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        .score-box {
-            background: rgba(255, 255, 255, 0.04);
+        .score-box-modern {
+            background: rgba(0, 0, 0, 0.4);
             padding: 10px 5px;
             border-radius: 10px;
+            text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .score-box span {
+        .score-box-modern span {
             display: block;
             font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
+            font-weight: bold;
+            color: #4ade80;
         }
 
-        .score-box small {
+        .score-box-modern small {
             font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: #aaa;
         }
 
-        /* Kitufe kikuu cha Jiunge Sasa */
-        .cta-container {
-            text-align: center;
-            margin-top: 50px;
-            padding: 35px 20px;
-            background: rgba(74, 222, 128, 0.03);
-            border-top: 1px solid rgba(74, 222, 128, 0.1);
-            border-bottom: 1px solid rgba(74, 222, 128, 0.1);
-            border-radius: 30px;
-        }
-
-        .btn-mega-apply {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(90deg, #2d5a27, #4ade80);
-            color: #000;
-            padding: 18px 45px;
+        /* Kitufe kikuu cha chini */
+        .btn-main-apply {
+            display: inline-block;
+            background: #4ade80;
+            color: #1a1c1e;
             border-radius: 50px;
+            padding: 16px 45px;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-decoration: none;
+            transition: 0.3s;
             box-shadow: 0 5px 20px rgba(74, 222, 128, 0.3);
-            transition: 0.3s all ease;
         }
 
-        .btn-mega-apply:hover {
+        .btn-main-apply:hover {
+            background: #fff;
+            color: #1a1c1e;
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(74, 222, 128, 0.6);
-            color: #000;
-            background: linear-gradient(90deg, #4ade80, #fff);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
     </style>
 
-    <!-- HTML CODE ILIYOBORESHWA -->
+    <!-- CODE MPYA YA HTML YA SAKSHANI YA USAJILI -->
     <section id="usajili" style="padding: 60px 5%;">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px; color: #4ade80;">📝 Usajili & Fomu za
-            Kujiunga</h2>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px; color: #4ade80;">📝 Usajili, Nyaraka &
+            Huduma za Mtandaoni</h2>
 
         <div class="usajili-grid">
 
-            <!-- KADI ya 1: KIDATO CHA KWANZA -->
-            <div class="premium-card">
+            <!-- KADI YA 1: KIDATO CHA KWANZA -->
+            <div class="modern-card">
                 <div>
-                    <h3><span>📥</span> Kidato cha Kwanza 2026</h3>
+                    <h3><span>🎒</span> Kidato cha Kwanza 2026</h3>
                     <p>Pakua maelekezo rasmi ya kujiunga (Joining Instructions) ikiwemo mahitaji ya shule, sare na fomu
                         za matibabu.</p>
                 </div>
-                <div>
-                    <a href="apply.html" class="btn-premium-download">📥 Download Form 1 Instructions</a>
-                </div>
+                <a href="apply.html" class="btn-card-action">Download Form 1 Instructions</a>
             </div>
 
-            <!-- KADI ya 2: KIDATO CHA TANO -->
-            <div class="premium-card">
+            <!-- KADI YA 2: KIDATO CHA TANO -->
+            <div class="modern-card">
                 <div>
-                    <h3><span>📥</span> Kidato cha Tano 2026</h3>
+                    <h3><span>🎓</span> Kidato cha Tano 2026</h3>
                     <p>Fomu maalum za kujiunga na masomo ya juu ya sekondari kwa wanafunzi waliochaguliwa kujiunga na
                         tahasusi zetu.</p>
                 </div>
-                <div>
-                    <a href="apply.html" class="btn-premium-download"
-                        style="border-color: rgba(74,222,128,0.4); color: #4ade80;">📥 Download Form 5 Instructions</a>
-                </div>
+                <a href="apply.html" class="btn-card-action">Download Form 5 Instructions</a>
             </div>
 
-            <!-- KADI ya 3: MAKTABA YA MTANDAONI (MPYA) -->
-            <div class="premium-card library-accent">
+            <!-- KADI YA 3: MAKTABA YA SHULE (MPYA) -->
+            <div class="modern-card">
                 <div>
-                    <h3><span>📚</span> Online Library</h3>
-                    <p>Ingia kwenye maktaba yetu ya kidijitali kusoma na kupakua vitabu, notisi (notes), na miongozo
-                        mbalimbali ya masomo bure.</p>
+                    <h3><span>📚</span> Maktaba ya Shule (Online)</h3>
+                    <p>Fikia melfu ya vitabu vya kiada na ziada, notisi zilizosasishwa pamoja na miongozo ya masomo
+                        mtandaoni saa 24.</p>
                 </div>
+                <a href="book.html" class="btn-card-action btn-library">Fungua Maktaba ya Mtandaoni</a>
+            </div>
+
+            <!-- KADI YA 4: HOME PACKAGE (MPYA) -->
+            <div class="modern-card">
                 <div>
-                    <a href="book.html" class="btn-premium-download btn-library">📖 Fungua Maktaba ya Shule</a>
+                    <h3><span>🏡</span> Holiday Packages 2026</h3>
+                    <p>Pakua kazi za nyumbani na majaribio ya likizo yaliyoandaliwa na walimu ili kuendelea kujifunza
+                        ukiwa nyumbani.</p>
                 </div>
+                <a href="holiday_packages.html" class="btn-card-action btn-holiday">Angalia Kifurushi cha Likizo</a>
             </div>
 
         </div>
 
-        <!-- SEHEMU YA JIUNGE SASA (APPLY NOW) -->
-        <div class="cta-container">
-            <p style="font-size: 0.95rem; margin-bottom: 20px; color: rgba(255,255,255,0.8);">Kama umekamilisha kusoma
-                maelekezo yote ya kujiunga, bonyeza kitufe hiki kuanza usajili wako mtandaoni:</p>
-            <a href="apply.html" target="_blank" class="btn-mega-apply">
+        <!-- SEHEMU YA CHINI: JIUNGE SASA -->
+        <div style="text-align: center; margin-top: 45px; padding: 25px; border-top: 1px solid var(--glass-border);">
+            <p style="font-size: 0.95rem; margin-bottom: 25px; color: #ddd;">Kama umekamilisha kusoma maelekezo yote ya
+                kujiunga, bonyeza kitufe hiki kuanza usajili rasmi:</p>
+            <a href="apply.html" target="_blank" class="btn-main-apply">
                 🚀 JIUNGE SASA (APPLY NOW)
             </a>
         </div>
 
         <!-- SEHEMU YA INSTALL APP -->
-        <div id="installContainer" style="display: none; text-align: center; padding: 25px 0 0 0;">
-            <button id="btnInstall" class="btn-premium-download"
-                style="display: inline-flex; background-color: #006400; color: white; border: none; border-radius: 30px; padding: 12px 30px; cursor: pointer;">
+        <div id="installContainer" style="display: none; text-align: center; padding: 20px; margin-top: 20px;">
+            <button id="btnInstall" class="btn"
+                style="background-color: #006400; color: white; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; border: none; font-weight: bold; cursor: pointer;">
                 📲 Install Embarway App
             </button>
         </div>
@@ -1665,7 +1666,7 @@
                 <div class="map-iframe-wrapper">
                     <iframe width="100%" height="100%" frameborder="0"
                         style="border:0; filter: contrast(1.05) brightness(0.95);"
-                        src="https://maps.google.com/maps?q=Endulen%20Ngorongoro%20Secondary%20School&t=&z=13&ie=UTF-8&iwloc=&output=embed"
+                        src="https://maps.google.com/maps?q=-3.262863805167555,35.26529631067756&t=k&z=16&ie=UTF-8&iwloc=&output=embed"
                         allowfullscreen></iframe>
                 </div>
             </div>
