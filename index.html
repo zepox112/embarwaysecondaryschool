@@ -1014,7 +1014,84 @@
             max-width: 100%;
             box-sizing: border-box;
         }
-    </style>
+    
+/* ===== MOBILE OPTIMIZATION PACK ===== */
+@media screen and (max-width:768px){
+html,body{
+width:100%!important;
+max-width:100%!important;
+overflow-x:hidden!important;
+margin:0!important;
+padding:0!important;
+}
+nav{
+padding:10px 15px!important;
+}
+.logo span{
+font-size:.8rem!important;
+max-width:120px!important;
+}
+.hero{
+height:70vh!important;
+}
+.hero h1{
+font-size:1.7rem!important;
+line-height:1.3!important;
+}
+.hero p{
+font-size:.95rem!important;
+}
+.grid-container,
+.quick-links,
+.welcome-section,
+.calendar-container{
+grid-template-columns:1fr!important;
+display:grid!important;
+}
+.glass-card{
+width:100%!important;
+overflow:hidden!important;
+}
+.headmaster-box{
+flex-direction:column!important;
+text-align:center!important;
+}
+.search-section{
+padding:15px!important;
+margin-top:20px!important;
+}
+.search-container,
+.liquid-box{
+width:100%!important;
+max-width:100%!important;
+}
+iframe{
+min-height:320px!important;
+}
+table{
+display:block!important;
+overflow-x:auto!important;
+white-space:nowrap!important;
+}
+.btn,
+.btn-matokeo,
+.btn-download,
+.btn-download-f5,
+.btn-apply-now{
+width:100%!important;
+max-width:100%!important;
+text-align:center!important;
+}
+img{
+max-width:100%!important;
+height:auto!important;
+}
+section{
+padding:40px 15px!important;
+}
+}
+
+</style>
 </head>
 
 <body>
