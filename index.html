@@ -1039,12 +1039,42 @@
                 max-width: 160px;
             }
         }
+
+        .header-fixed {
+            position: fixed !important;
+            /* Inalazimisha igande kwenye skrini */
+            top: 0 !important;
+            /* Inagandisha upande wa juu kabisa */
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 99999 !important;
+            /* Namba kubwa inayozuia isifunikwe na kitu chochote */
+
+            /* Muonekano wa kisasa wa Glassmorphism */
+            background: rgba(26, 28, 30, 0.85) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+
+            /* Mpangilio wa vitu vya ndani */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-sizing: border-box;
+        }
+
+        /* Hakikisha body ina nafasi ili menu isifunike herufi za mwanzo za tovuti */
+        body {
+            padding-top: 85px !important;
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="header-fixed">
         <div class="logo">
             <img src="logo.jpg" alt="Embarway Logo">
             <span>EMBARWAY SECONDARY SCHOOL</span>
@@ -1054,6 +1084,7 @@
             <span></span>
             <span></span>
         </div>
+
         <ul id="navMenu">
             <li><a href="#nyumbani" class="active" onclick="closeMenu()">Home</a></li>
             <li><a href="#kuhusu" onclick="closeMenu()">Kuhusu Shule</a></li>
