@@ -1,143 +1,446 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="sw" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1280, initial-scale=0.3">
-    <title>Embarway Library | No-Error Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embarway Book Library | Liquid Glass Design</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
         rel="stylesheet">
+
     <style>
+        :root {
+            --primary-green: #10b981;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #000;
-            color: #fff;
-            width: 1280px;
-            margin: 0 auto;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-        }
-
-        .video-box {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        iframe {
+        /* Animated Liquid Background */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #064e3b 0%, #000000 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.4;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(-10%, -10%) scale(1);
+            }
+
+            to {
+                transform: translate(20%, 20%) scale(1.2);
+            }
+        }
+
+        /* Liquid Glass Effect */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-glass {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Hover Effects */
+        .book-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-green:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
         }
     </style>
 </head>
 
-<body class="pb-20">
-
-    <nav class="flex justify-between items-center p-8 border-b border-emerald-500/20">
-        <h1 class="text-2xl font-black italic">EMBARWAY <span class="text-emerald-500 text-3xl">.</span></h1>
-        <div class="flex gap-8 items-center">
-            <input type="text" id="mainSearch" oninput="renderContent()" placeholder="Tafuta hapa..."
-                class="bg-white/5 border border-white/20 rounded-full px-6 py-2 w-80 outline-none focus:border-emerald-500">
-            <div class="text-[10px] text-emerald-500 font-bold uppercase tracking-widest">Digital Campus</div>
-        </div>
-    </nav>
-
-    <div class="p-10">
-        <section>
-            <h2 class="text-xl font-bold mb-8 text-white uppercase tracking-tighter">Video za <span
-                    class="text-emerald-500">Masomo</span></h2>
-            <div id="videoGrid" class="grid grid-cols-3 gap-8">
-            </div>
-        </section>
-
-        <section class="mt-20">
-            <h2 class="text-xl font-bold mb-8 text-white uppercase tracking-tighter">Maktaba ya <span
-                    class="text-emerald-500">Vitabu (PDF)</span></h2>
-            <div id="booksGrid" class="grid grid-cols-4 gap-6">
-            </div>
-        </section>
+<body>
+    <div class="liquid-bg">
+        <div class="blob" style="top: -10%; left: -10%;"></div>
+        <div class="blob" style="bottom: -10%; right: -10%; background: #065f46;"></div>
     </div>
 
+    <a href="https://wa.me/255783243745"
+        class="fixed bottom-6 right-6 z-[999] btn-green p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.675 1.439 5.662 1.439h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <nav class="fixed top-0 w-full z-50 nav-glass px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-full border border-emerald-500 flex items-center justify-center bg-emerald-500/10">
+                <span class="text-emerald-500 font-black">E</span>
+            </div>
+            <h1 class="text-xl font-black text-white tracking-tighter">EMBARWAY <span
+                    class="text-emerald-500">LIBRARY</span></h1>
+        </div>
+        <div class="hidden md:flex gap-6 text-[11px] font-bold uppercase tracking-widest">
+            <a href="#" class="hover:text-emerald-500 transition">Nyumbani</a>
+            <a href="#booksGrid" class="hover:text-emerald-500 transition">Vitabu</a>
+            <a href="#video-section" class="hover:text-emerald-500 transition">Video</a>
+        </div>
+        <a href="https://wa.me/255783243745" target="_blank"
+            class="btn-green text-black px-5 py-2 rounded-full text-[10px] font-black uppercase">WhatsApp</a>
+    </nav>
+
+    <header class="max-w-7xl mx-auto pt-32 px-6 pb-12">
+        <div class="liquid-glass p-8 md:p-16 border border-emerald-500/20 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[100px]"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="text-center md:text-left">
+                    <span class="text-emerald-500 font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">Maktaba
+                        ya vitabu Embarway</span>
+                    <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-6">
+                        SOMA <br> <span class="text-emerald-500 italic">KIBINGWA.</span>
+                    </h1>
+                    <p class="text-slate-400 max-w-md text-sm leading-relaxed mb-8">
+                        Pata vitabu vyote vya Sekondari na Advance, pamoja na video za masomo kwa mtindo wa kisasa
+                        zaidi.
+                    </p>
+
+                    <div class="relative max-w-md">
+                        <input type="text" id="mainSearch" oninput="renderEverything()"
+                            placeholder="Tafuta somo au kitabu..."
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white outline-none focus:border-emerald-500 transition-all shadow-inner">
+                        <div class="absolute right-4 top-4 text-emerald-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3 w-full md:w-auto">
+                    <button onclick="setFilter('all')"
+                        class="btn-green text-black px-8 py-4 rounded-2xl font-black uppercase text-xs flex items-center justify-center gap-2">
+                        Zote
+                    </button>
+
+                    <button onclick="setFilter('sekondari')"
+                        class="liquid-glass px-8 py-4 hover:bg-emerald-500 hover:text-black transition font-black uppercase text-xs">
+                        Sekondari
+                    </button>
+
+                    <button onclick="setFilter('advanced')"
+                        class="liquid-glass px-8 py-4 hover:bg-emerald-500 hover:text-black transition font-black uppercase text-xs">
+                        Advanced
+                    </button>
+
+                    <button onclick="scrollToVideos()"
+                        class="liquid-glass border-emerald-500/50 px-8 py-4 hover:bg-emerald-500 hover:text-black transition font-black uppercase text-xs flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Video Masomo
+                    </button>
+                </div>
+
+                <script>
+                    // Ongeza hii function kwenye <script> yako ili button ya video ifanye kazi
+                    function scrollToVideos() {
+                        const videoSection = document.getElementById('video-section');
+                        if (videoSection) {
+                            videoSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex items-center gap-4 mb-10">
+            <h2 class="text-2xl font-black uppercase tracking-tighter">Maktaba ya <span
+                    class="text-emerald-500">Vitabu</span></h2>
+            <div class="h-[2px] flex-grow bg-emerald-500/20"></div>
+        </div>
+
+        <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        </div>
+    </main>
+
+    <section id="video-section" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex items-center gap-4 mb-10">
+            <h2 class="text-2xl font-black uppercase tracking-tighter">Video za <span
+                    class="text-emerald-500">Masomo</span></h2>
+            <div class="h-[2px] flex-grow bg-emerald-500/20"></div>
+        </div>
+        <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        </div>
+    </section>
+
+    <footer class="mt-20 py-20 border-t border-emerald-500/10 bg-black/50 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black text-white mb-2">EMBARWAY <span class="text-emerald-500">EDUCATION</span>
+            </h2>
+            <p class="text-[10px] text-emerald-500 uppercase tracking-[0.5em] mb-10">Future of Digital Learning</p>
+            <div class="flex justify-center gap-8 text-sm text-slate-400 mb-10">
+                <span class="hover:text-emerald-500 cursor-pointer">📞 0747712469</span>
+                <span class="hover:text-emerald-500 cursor-pointer">📧 zepoxkenny4@gmail.com</span>
+            </div>
+            <p class="text-[9px] text-slate-600 uppercase tracking-widest">Designed by Zephania Kennedy | Arusha,
+                Tanzania</p>
+        </div>
+    </footer>
+
     <script>
-        // Orodha ya Video (Tumia ID pekee)
-        const studyVideos = [
-            { t: "Biology: Cells & Life", id: "MyWlAPRlwbw", sub: "Form 1 & 2" },
-            { t: "Physics: Force & Motion", id: "cx-d-x2rRdY", sub: "Form 3" },
-            { t: "Chemistry: Atomic Structure", id: "iddF_bMs6Sc", sub: "Advanced" },
-            { t: "Kilio Chetu: Uchambuzi", id: "IZaGAsnBzdo", sub: "Kiswahili" },
-            { t: "Ngoswe: Penzi Kitovu cha Uzembe", id: "7UA1f3FEq6E", sub: "Kiswahili" },
-            { t: "English: Literature Theories", id: "z1vgVgafz3o", sub: "Form 4" }
-        ];
-
-        // Orodha ya Vitabu
+        // ... (Tumia data zile zile ulizokuwa nazo hapo mwanzo) ...
         const books = [
-            { t: "Physics Form 1 - Full", l: "https://drive.google.com/file/d/1jp5e_nbEeK3MVxzvmYLzTckyGbHr2YL1/view" },
-            { t: "Chemistry Form 1 - Full", l: "https://drive.google.com/file/d/1l6kkYFUn1HbP8if3LYxv0EuSMGbqn8s-/view" },
-            { t: "Biology Form 1 - Full", l: "https://drive.google.com/file/d/1FgFNFnM6cujQYvGzqtinxRaxMe2rYX_C/view" },
-            { t: "Advanced Math Form 5", l: "https://drive.google.com/file/d/1zxzR3gVvAvQQWijYj6L_YX-AG21V4crf/view" }
+            { t: "Physics - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1jp5e_nbEeK3MVxzvmYLzTckyGbHr2YL1/view" },
+            { t: "Chemistry - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1l6kkYFUn1HbP8if3LYxv0EuSMGbqn8s-/view" },
+            { t: "Biology - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1FgFNFnM6cujQYvGzqtinxRaxMe2rYX_C/view" },
+            { t: "Basic Mathematics - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/12VQV8b5tSCblfl7svz9vF99O3o0jkjVr/view" },
+            { t: "Geography - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1fsrz3PCxQWcSZHN_HphGT1X23wvL_IHs/view" },
+            { t: "History - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1PUUoKiYWXmLPDlmg6eS_bAgm5swQBF3d/view" },
+            { t: "Business Studies - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1Gjq7b5WEI5N0hBZtqJovsEkjJw-sKx7D/view" },
+            { t: "English - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1cu_jLps6oK8Zo4O2q3-CTn1BUiYIx9D0/view" },
+            { t: "Kiswahili - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/19f8D1ConQV7g7pUyjoLWDZpiEcCIHb0P/view" },
+            { t: "Book Keeping - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1Ibk5UjovZ7nrVz_Bllb8A63geS2ZqRCp/view" },
+            { t: "Animal Health and Production - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1KluZc_8enR6YuzFoAin4e7IiDPa-eYW4/view" },
+            { t: "Computer Science - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/16hS8VZN3ZdbL6N3rOS3pqaGIIMPoLZZ4/view" },
+            { t: "Agriculture - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1vIFzPZ4Sx0J7xT4ack4sWEQ7JAwC1282/view" },
+            { t: "Bible Knowledge - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1JeHJ4Dnn_mAbSFTOBIUrWa12IvsDxOas/view" },
+            { t: "Historia ya Tanzania na Maadili - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1hRmD148IoOUo6fRGdkJ7wRNOzlnIKre3/view" },
+            { t: "Additional Mathematics - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1V83u3ZoBCdSjUXzC9kiwBhVOdUJ4z6xu/view" },
+            { t: "Elimu ya Dini ya Kiislamu - Form 1", c: "sekondari", l: "https://drive.google.com/file/d/1_z-zVa6QMJZX2LsCCKxwVqLycCoxffOi/view" },
+
+            // KIDATO CHA PILI (FORM TWO - MTAALA MPYA)
+            { t: "Physics - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1sEZZIsp2cSTvdeVBhsddvfwZFQVEsA4E/view" },
+            { t: "Chemistry - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/13fZuRrop5ebcCDD3gvrPX3vfGXBP7urz/view" },
+            { t: "Biology - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1NfEvClLyoY-qJlF6Zv6S4hZQK5UHOQTu/view" },
+            { t: "Basic Mathematics - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1P20dFrfEYGWN4dL3-_4g4avT0-SOKlrJ/view" },
+            { t: "Geography - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1KteYmDjOl-p2jlAOV4mJn-VRX5Buzg4E/view" },
+            { t: "History - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1YF5T-Lm_iu2oV-mMtmX0CVyswaAIkbst/view" },
+            { t: "Business Studies - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1oMkkRo4fdwi12Ge84VB8X8c9klvEIaaI/view" },
+            { t: "English - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1qNFIkcWEadOpWwjlisoJoRq9_9sPr-s2/view" },
+            { t: "Kiswahili - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1TMJn-a60RQGeV90hJKzEIejZtzy4o1P8/view" },
+            { t: "Book Keeping - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1tGewFRgXKMn5TcfaQBZn40g5IbbGc9f8/view" },
+            { t: "Computer Science - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1iVwDZaALjp4qYN-nzwcHdizby912H8CJ/view" },
+            { t: "Agriculture - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1aCFMQ1IA10atoXrZSUu-8Fq6h0JtEKZl/view" },
+            { t: "Arabic Language - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1iJqwTIo8F4GM_oFzD3BhIsaH43hpJwN5/view" },
+            { t: "Historia ya Tanzania na Maadili - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1V5sOmQBRybtOMG5cnGTyofl-_-5NZo7u/view" },
+            { t: "Additional Mathematics - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1Cp5FqZg2h6POtsaiJwrdC7DPMLKz3w5e/view" },
+            { t: "Chinese Language - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1C99Fw7z6JrQVKRkYg1mtNsPobNKlZ4ss/view" },
+            { t: "Horticultural Production - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1hY8hHhP25GEmJZghMTnK5L_9-_sSQWr7/view" },
+            { t: "Leather and Footwear - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1fPFe4A2HQhlyQPqCuparHmT7e8vE5RH4/view" },
+            { t: "Engineering Science - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1NWnP9UC1CGW-OMI8P4X4T84ev6nBFOzx/view" },
+            { t: "Civil Draughting - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1hKiGStychRUf-mW1kCnOTN9pD2tqgkwP/view" },
+            { t: "Carpentry & Joinery - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1j_HmDVFr6Uo0PDuSnuGgw2IgHhcrGKl3/view" },
+            { t: "Auto Electric - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/16izM2nvffsJsLdYpBvgshxkIt9s9N61p/view" },
+            { t: "Acting - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1Mp7B3OOdDf7IXs2NxmSBb8GGr00yPDuP/view" },
+            { t: "Agro Mechanics - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1Q1PTtnT3IJM7lF26ZSWJGI86MCpWnaO7/view" },
+            { t: "Arts & Design - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1G8z1Iv1Uj3eJzfunYtYvAw4M6_kE8Ah9/view" },
+            { t: "Auto Body Repair - Form 2", c: "sekondari", l: "https://drive.google.com/file/d/1G8z1Iv1Uj3eJzfunYtYvAw4M6_kE8Ah9/view" },
+
+            // KIDATO CHA TATU (FORM THREE)
+            { t: "Physics - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1W8zvhi89h1ISG_RjUPGNLjKqnNSmB_XN/view" },
+            { t: "Chemistry - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1MkGOoFpDoGcFs80ydv0BJkCbBz_gsDx7/view" },
+            { t: "Biology - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1p_dGDLAwtUmlyUj-3zrE9nFwxMIHf0jq/view" },
+            { t: "Basic Mathematics - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1zu7M1OcwOppIcdV7LKRfjIKnbDhMndZu/view?usp=share_link" },
+            { t: "Geography - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1YR2ipx8EiUTg1r2PU-a688UgRbKSFfYj/view" },
+            { t: "History - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/134Lkg_GyPyg0gpdHfT98QdnHiMKv7H7t/view" },
+            { t: "Civics - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1oSBTbHafAkEb36D-MofC4t_TY-uX4yfy/view" },
+            { t: "English - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1-ozO_8DAuN__JYT2UqYPK2Cg3-8gWhtK/view" },
+            { t: "Kiswahili - Form 3", c: "sekondari", l: "http://drive.google.com/file/d/1bELI_bpBc-pydbd8Cc6wx1UBRwfuqXJo/view" },
+            { t: "Book Keeping - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1Ep9Lrnm6vNMLDnnX-E5Kb1zUf43ofwAQ/view" },
+            { t: "Additional Mathematics - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1nyRYVXu7KXscS1nX_2fKymQkfbaLzQ__/view" },
+            { t: "ICT/Computer - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1LcVqVDSKoZQIwWMbnCvd8kN4yG04woqp/view" },
+            { t: "Arabic Language - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1tAyYSmUM2mmhZZ529aBDSl4YNx1RrJdF/view" },
+            { t: "Agriculture - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/1JHYQ08GWunXVNc7awJ-0zpTsafohEAoQ/view" },
+            { t: "Commerce - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/14LcQl3aF6idj0gITF7W0ryntYzMmo6xL/view" },
+            { t: "Literature - Form 3", c: "sekondari", l: "https://drive.google.com/file/d/171Ys733DOUiARHr6OlmS5qutmgVSuPNf/view" },
+
+            // KIDATO CHA NNE (FORM FOUR)
+            { t: "Physics - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1u0B8UvAKsTaUAqey6axW0ZJisU1xCwJ_/view" },
+            { t: "Chemistry - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1CaCWRYQ_wltdTsE9ya-eZtCQDJBIxO9k/view" },
+            { t: "Biology - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1B2wmCdK1ir0fXLvIOutagyzAQWTxT6eN/view" },
+            { t: "Basic Mathematics - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1pdrUOzRZXEBcQPFV607aN2c5JfTL8DBO/view" },
+            { t: "Geography - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1p5oEUAUmR541TrK9WIE2jPFBUP1HoYsZ/view" },
+            { t: "History - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1v_zmmEZko0HbJQmm1ApLWNsxfDKULYR7/view" },
+            { t: "Civics - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1QDe2xeyQwUUrEctOAumHWtbm0G6RFcTz/view" },
+            { t: "English - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/16taIGwD0LWFodMzoXaOb4VXX9B1ME3wo/view" },
+            { t: "Kiswahili - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1lw0e2h9bdZNZkHIlpJBZClasUgIYLkrb/view" },
+            { t: "ICT/Computer - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1Zz82eCQYVXvY2Ms_4qhQwBYe46ZzYiZT/view" },
+            { t: "Agriculture - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1ib5ID4mPU2eMB85XGwEkviD7KMUcrgba/view" },
+            { t: "Commerce - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/1r0d2Qc15WijY_JKF8IjQ5bnxM7Pp-1yo/view" },
+            { t: "Literature - Form 4", c: "sekondari", l: "https://drive.google.com/file/d/171Ys733DOUiARHr6OlmS5qutmgVSuPNf/view" },
+
+            // KIDATO CHA TANO NA SITA (ADVANCED LEVEL)
+            { t: "English Language - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1QnB1DYpoNYbODSdeZCPfup1fFzrKgwoT/view" },
+            { t: "Microeconomics - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1Aq7awfn3oUXFwbyLhC5KH_XUPincjaoj/view" },
+            { t: "General and Inorganic Chemistry - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1epCfCWnHqCN94M2u9PWMf1DXu1K-8W-K/view" },
+            { t: "Physical Geography - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1DEwYEo1TKhdggvL5MippGLCL4aIfK1WS/view" },
+            { t: "Advanced Mathematics - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1zxzR3gVvAvQQWijYj6L_YX-AG21V4crf/view" },
+            { t: "Practical Geography - Form 5&6", c: "advanced", l: "https://drive.google.com/file/d/17MLctNNLfLiLZx4tQZcvheQWCBKJgMHp/view" },
+            { t: "Kiswahili - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1I0Xpg8FN2YsnpNYX5CBcNCb3usaOSidM/view" },
+            { t: "Physics - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1LNrPCwpC7Cs7FPoCcxK3cTh3J6xeFIo5/view" },
+            { t: "Academic Communication - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1Jj2FGIodMttXCV6iCcZTrMRXuqX1jNac/view" },
+            { t: "Agriculture - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1pXfOqASr5KdLnQXCcuaQcfgDVQ2MDmzY/view" },
+            { t: "Biology - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1tAbmffqPiXy-miT45rCluqUjYsM7PqvL/view" },
+            { t: "History - Form 5", c: "advanced", l: "https://drive.google.com/file/d/15qs3pWeAbMSemPrOLAJuszs9kj3muHzq/view" },
+            { t: "Literature in English - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1y8-A6Yl5pDzHP8rSnMYsEaAjnWrTZkrL/view" },
+            { t: "Historia ya Tanzania na Maadili - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1ZDk_Z0KXU3J0GIJ1v284XyfglI4pie2j/view" },
+            { t: "Business Studies - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1okZEdIn3qR4pdpinI7GVRjlMXQyu7a-j/view" },
+            { t: "Physical Chemistry - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1CMilXSwDvw9S-yzIDL54lNEBCL5dPFuh/view" },
+            { t: "Fasihi ya Kiswahili - Form 5", c: "advanced", l: "https://drive.google.com/file/d/16ZFt71VotF58rX7gAYMsiN_X-y3Mec5G/view" },
+            { t: "Human Geography - Form 5", c: "advanced", l: "https://drive.google.com/file/d/1DIgklzk9B7UOEhZpNSkM4U_Me41JEZyG/view" },
+            { t: "Agriculture - Form 6", c: "advanced", l: "https://drive.google.com/file/d/1Gq0WA-LSgu4qaFVtF4renbLZynd2S4ep/view" }
         ];
 
-        function renderContent() {
-            const q = document.getElementById('mainSearch').value.toLowerCase();
+        const studyVideos = [
+            { t: "Secondary Biology", id: "MyWlAPRlwbw", level: "Sekondari", link: "https://youtu.be/MyWlAPRlwbw", c: "SECONDARY" },
+            { t: "Secondary Physics", id: "cx-d-x2rRdY", level: "Sekondari", link: "https://youtu.be/cx-d-x2rRdY", c: "SECONDARY" },
+            { t: "Literature: Theories of Literature", id: "z1vgVgafz3o", level: "Kidato cha 3", link: "https://youtu.be/z1vgVgafz3o", c: "FASIHI" },
+            { t: "Kilio Chetu: Full Movie", id: "IZaGAsnBzdo", level: "Kidato cha 3 & 4", link: "https://youtu.be/IZaGAsnBzdo", c: "FASIHI" },
+            { t: "Ngoswe: Penzi Kitovu cha Uzembe (Movie)", id: "7UA1f3FEq6E", level: "Kidato cha 3 & 4", link: "https://youtu.be/7UA1f3FEq6E", c: "FASIHI" },
+            {
+                t: "Orodha: Full Movie", id: "d6FBdtzLW8k", level: "Kidato cha 3 & 4", link: "https://youtu.be/d6FBdtzLW8k", c: "FASIHI"
+            },
+            // ADVANCE
+            { t: "Advance Chemistry", id: "iddF_bMs6Sc", level: "High School", link: "https://youtu.be/iddF_bMs6Sc", c: "ADVANCE" },
+            { t: "Advance Biology", id: "VtvL30maetc", level: "High School", link: "https://youtu.be/VtvL30maetc", c: "ADVANCE" },
+        ];
 
-            // Render Videos
+        let currentCategory = 'all';
+        // Function ya kuscroll kwenda juu
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Monitor scrolling ili kuonyesha au kuficha mshale
+        window.onscroll = function () {
+            const btn = document.getElementById('backToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                // Onyesha mshale
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                // Ficha mshale
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        };
+        function setFilter(cat) {
+            currentCategory = cat;
+            renderEverything();
+        }
+
+        function renderEverything() {
+            const searchTerm = document.getElementById('mainSearch').value.toLowerCase();
+
+            // Books Render
+            const bGrid = document.getElementById('booksGrid');
+            const filteredBooks = books.filter(b =>
+                (currentCategory === 'all' || b.c === currentCategory) &&
+                b.t.toLowerCase().includes(searchTerm)
+            );
+
+            bGrid.innerHTML = filteredBooks.map(b => `
+                <div class="book-card liquid-glass p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 text-emerald-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.75 0 3.417.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500/60">${b.c}</span>
+                        <h3 class="text-white font-bold text-lg mt-2 mb-6 leading-tight">${b.t}</h3>
+                    </div>
+                    <button onclick="window.open('${b.l}', '_blank')" class="w-full py-3 rounded-xl border border-emerald-500/30 text-white text-[10px] font-black uppercase hover:bg-emerald-500 hover:text-black transition">Soma Sasa</button>
+                </div>
+            `).join('');
+
+            // Videos Render
             const vGrid = document.getElementById('videoGrid');
-            vGrid.innerHTML = studyVideos.filter(v => v.t.toLowerCase().includes(q))
-                .map((v, index) => `
-                <div class="liquid-glass p-4 group">
-                    <div id="vid-container-${index}" class="video-box mb-4">
-                        <div class="absolute inset-0 cursor-pointer z-10" onclick="loadVideo(${index}, '${v.id}')">
-                            <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg" class="w-full h-full object-cover opacity-50">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition">
-                                    <svg class="w-8 h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                </div>
+            const filteredV = studyVideos.filter(v => v.t.toLowerCase().includes(searchTerm));
+
+            vGrid.innerHTML = filteredV.map(v => `
+                <div class="liquid-glass p-4 group cursor-pointer" onclick="window.open('${v.link}', '_blank')">
+                    <div class="relative overflow-hidden rounded-xl aspect-video mb-4">
+                        <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-emerald-900/20 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl">
+                                <svg class="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                         </div>
                     </div>
-                    <h3 class="font-bold text-sm text-white px-2">${v.t}</h3>
-                    <p class="text-[10px] text-emerald-500 px-2 font-bold uppercase mt-1">${v.sub}</p>
-                </div>`).join('');
-
-            // Render Books
-            const bGrid = document.getElementById('booksGrid');
-            bGrid.innerHTML = books.filter(b => b.t.toLowerCase().includes(q))
-                .map(b => `
-                <div class="liquid-glass p-6 flex flex-col justify-between hover:border-emerald-500 transition cursor-default">
-                    <h3 class="font-bold text-white mb-4 leading-tight">${b.t}</h3>
-                    <button onclick="window.open('${b.l}', '_blank')" class="w-full bg-emerald-500/10 border border-emerald-500/40 py-2 rounded-xl text-[10px] font-black text-emerald-500 hover:bg-emerald-500 hover:text-black transition uppercase">Soma Kitabu</button>
-                </div>`).join('');
+                    <h3 class="text-white font-bold text-sm px-2">${v.t}</h3>
+                </div>
+            `).join('');
         }
 
-        function loadVideo(index, id) {
-            // RAM Management: Futa video yoyote inayocheza sasa hivi kabla ya kufungua mpya
-            const allContainers = document.querySelectorAll('[id^="vid-container-"]');
-            renderContent(); // Hii inarudisha muonekano wa picha (Thumbnails)
-
-            // Weka video mpya kwa kutumia youtube-nocookie
-            const container = document.getElementById(`vid-container-${index}`);
-            container.innerHTML = `
-                <iframe 
-                    src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>`;
-        }
-
-        // Pakia kila kitu ukurasa ukifunguka
-        window.onload = renderContent;
+        window.onload = renderEverything;
     </script>
+    <button id="backToTop" onclick="scrollToTop()"
+        class="fixed bottom-24 right-6 z-[998] w-14 h-14 liquid-glass border-emerald-500/50 text-emerald-500 flex items-center justify-center opacity-0 translate-y-10 transition-all duration-500 hover:bg-emerald-500 hover:text-black shadow-2xl">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 </body>
 
 </html>
