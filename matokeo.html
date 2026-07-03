@@ -233,7 +233,6 @@
                 text-decoration: none;
                 transition: 0.3s;
                 opacity: 0.4;
-                /* Inapakia... */
                 cursor: not-allowed;
             }
 
@@ -315,7 +314,7 @@
         // --- SCRIPT URL YA ZEPOX OMNI-TECH ---
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7TVUJnNHCVOeMxMqfMWLNPiT2CNlhYFlollQ7VAEqrJ1wZ1zmJnhHYOInYL6v8gE/exec";
 
-        // 1. Kazi ya kuonyesha Joining Forms (Inategemea Data ya Sheet pekee)
+        // 1. Kazi ya kuonyesha Joining Forms
         function updateJoiningUI(f1Link, f5Link) {
             const b1 = document.getElementById('box_f1');
             const b5 = document.getElementById('box_f5');
@@ -329,6 +328,8 @@
                     b1.classList.add('active');
                     if (s1) { s1.innerText = "Tayari (PDF)"; s1.style.color = "#4ade80"; }
                 }
+            } else {
+                if (b1) { b1.classList.remove('active'); b1.href = "javascript:void(0)"; if (s1) { s1.innerText = "Bado..."; s1.style.color = "#ff4d4d"; } }
             }
             if (f5Link && f5Link.startsWith("http")) {
                 if (b5) {
@@ -337,98 +338,124 @@
                     b5.classList.add('active');
                     if (s5) { s5.innerText = "Tayari (PDF)"; s5.style.color = "#4ade80"; }
                 }
+            } else {
+                if (b5) { b5.classList.remove('active'); b5.href = "javascript:void(0)"; if (s5) { s5.innerText = "Bado..."; s5.style.color = "#ff4d4d"; } }
             }
         }
 
-        async function loadAllResults() {
-            try {
-                // 2. Vuta data yote kwa mpigo kutoka kwenye Sheet
-                const response = await fetch(SCRIPT_URL + "?action=getAllData", { priority: 'high' });
-                if (!response.ok) throw new Error('Network error');
-                const data = await response.json();
+        // Kazi kuu ya kujaza data kwenye kadi za HTML
+        function renderDataToUI(data) {
+            if (!data) return;
 
-                // --- 3. JAZA MATOKEO YA NDANI (INTERNAL RESULTS) ---
-                const internalCont = document.getElementById('internal-container');
-                if (internalCont && data.internal) {
-                    internalCont.innerHTML = "";
-                    const levels = [
-                        { id: "form1", t: "Form 1" },
-                        { id: "form2", t: "Form 2" },
-                        { id: "form3", t: "Form 3" },
-                        { id: "form4", t: "Form 4" },
-                        { id: "form5", t: "Form 5" },
-                        { id: "form6", t: "Form 6" },
-                        { id: "mock_f4", t: "Mock Form 4" },
-                        { id: "mock_f6", t: "Mock Form 6" }
-                    ];
+            // --- JAZA MATOKEO YA NDANI ---
+            const internalCont = document.getElementById('internal-container');
+            if (internalCont && data.internal) {
+                internalCont.innerHTML = "";
+                const levels = [
+                    { id: "form1", t: "Form 1" },
+                    { id: "form2", t: "Form 2" },
+                    { id: "form3", t: "Form 3" },
+                    { id: "form4", t: "Form 4" },
+                    { id: "form5", t: "Form 5" },
+                    { id: "form6", t: "Form 6" },
+                    { id: "mock_f4", t: "Mock Form 4" },
+                    { id: "mock_f6", t: "Mock Form 6" }
+                ];
 
-                    levels.forEach(l => {
-                        const found = data.internal.find(x => x.level.toLowerCase() === l.id.toLowerCase());
-                        const link = (found && found.link && found.link !== "" && found.link !== "#") ? found.link : "#";
-                        const examTitle = (found && found.title && found.title !== "") ? found.title : "Soon";
-                        const isOff = link === "#";
+                levels.forEach(l => {
+                    const found = data.internal.find(x => x.level.toLowerCase() === l.id.toLowerCase());
+                    const link = (found && found.link && found.link !== "" && found.link !== "#") ? found.link : "#";
+                    const examTitle = (found && found.title && found.title !== "") ? found.title : "Soon";
+                    const isOff = link === "#";
 
-                        internalCont.innerHTML += `
-                        <a href="${link}" ${isOff ? "" : 'target="_blank"'} class="btn btn-outline ${isOff ? 'btn-disabled' : ''}" style="text-align: center; padding: 12px;">
-                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <span style="font-weight: 800; font-size: 1rem; color: #f1c40f;">${l.t}</span>
-                                <span style="font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; color: #fff;">${isOff ? '(Coming Soon)' : examTitle}</span>
-                            </div>
-                        </a>`;
-                    });
-                }
+                    internalCont.innerHTML += `
+                    <a href="${link}" ${isOff ? "" : 'target="_blank"'} class="btn btn-outline ${isOff ? 'btn-disabled' : ''}" style="text-align: center; padding: 12px;">
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <span style="font-weight: 800; font-size: 1rem; color: #f1c40f;">${l.t}</span>
+                            <span style="font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; color: #fff;">${isOff ? '(Coming Soon)' : examTitle}</span>
+                        </div>
+                    </a>`;
+                });
+            }
 
-                // --- 4. JAZA JOINING INSTRUCTIONS (Moja kwa moja kutoka Sheet) ---
-                if (data.internal) {
-                    const joinF1 = data.internal.find(x => x.level.toLowerCase() === "join_f1");
-                    const joinF5 = data.internal.find(x => x.level.toLowerCase() === "join_f5");
+            // --- JAZA JOINING INSTRUCTIONS ---
+            if (data.internal) {
+                const joinF1 = data.internal.find(x => x.level.toLowerCase() === "join_f1");
+                const joinF5 = data.internal.find(x => x.level.toLowerCase() === "join_f5");
+                const f1Link = (joinF1 && joinF1.link && joinF1.link !== "" && joinF1.link !== "#") ? joinF1.link : null;
+                const f5Link = (joinF5 && joinF5.link && joinF5.link !== "" && joinF5.link !== "#") ? joinF5.link : null;
+                updateJoiningUI(f1Link, f5Link);
+            }
 
-                    const f1Link = (joinF1 && joinF1.link && joinF1.link !== "" && joinF1.link !== "#") ? joinF1.link : null;
-                    const f5Link = (joinF5 && joinF5.link && joinF5.link !== "" && joinF5.link !== "#") ? joinF5.link : null;
+            // --- JAZA NECTA RESULTS ---
+            const currentCont = document.getElementById('current-necta-container');
+            const mockCont = document.getElementById('mock-container');
+            const prevCont = document.getElementById('previous-necta-container');
 
-                    updateJoiningUI(f1Link, f5Link);
-                }
+            if (currentCont) currentCont.innerHTML = "";
+            if (mockCont) mockCont.innerHTML = "";
+            if (prevCont) prevCont.innerHTML = "";
 
-                // --- 5. JAZA NECTA RESULTS ---
-                const currentCont = document.getElementById('current-necta-container');
-                const mockCont = document.getElementById('mock-container');
-                const prevCont = document.getElementById('previous-necta-container');
+            if (data.necta && data.necta.length > 0) {
+                data.necta.forEach(res => {
+                    const type = res.type ? res.type.toUpperCase() : "";
+                    const status = res.status ? res.status : "";
+                    const btnClass = type.includes('MOCK') ? 'btn-mock' : (status === 'Current' ? 'btn-green' : 'btn-outline');
 
-                if (currentCont) currentCont.innerHTML = "";
-                if (mockCont) mockCont.innerHTML = "";
-                if (prevCont) prevCont.innerHTML = "";
+                    const btnHtml = `
+                    <a href="${res.link}" target="_blank" class="btn ${btnClass}">
+                        ${type} ${res.year}
+                    </a>`;
 
-                if (data.necta && data.necta.length > 0) {
-                    data.necta.forEach(res => {
-                        const type = res.type ? res.type.toUpperCase() : "";
-                        const status = res.status ? res.status : "";
-                        const btnClass = type.includes('MOCK') ? 'btn-mock' : (status === 'Current' ? 'btn-green' : 'btn-outline');
-
-                        const btnHtml = `
-                        <a href="${res.link}" target="_blank" class="btn ${btnClass}">
-                            ${type} ${res.year}
-                        </a>`;
-
-                        if (type.includes('MOCK')) {
-                            if (mockCont) mockCont.innerHTML += btnHtml;
-                        } else if (status === "Current") {
-                            if (currentCont) currentCont.innerHTML += btnHtml;
-                        } else {
-                            if (prevCont) prevCont.innerHTML += btnHtml;
-                        }
-                    });
-                }
-
-            } catch (err) {
-                console.error("Zepox Omni-Tech Error:", err);
-                document.querySelectorAll('.loading-text').forEach(el => {
-                    el.innerHTML = "❌ Shida ya mtandao. Tafadhali refresh ukurasa.";
-                    el.style.color = "#ff4d4d";
+                    if (type.includes('MOCK')) {
+                        if (mockCont) mockCont.innerHTML += btnHtml;
+                    } else if (status === "Current") {
+                        if (currentCont) currentCont.innerHTML += btnHtml;
+                    } else {
+                        if (prevCont) prevCont.innerHTML += btnHtml;
+                    }
                 });
             }
         }
 
-        // Pakia kila kitu mara tu ukurasa unapokuwa tayari
+        // Hapa ndipo LocalStorage na Background Update zinapofanyika
+        async function loadAllResults() {
+            // 1. ANGALIA KAMA KUNA DATA LOCALSTORAGE (KUPAKIA HARAKA KISIRI)
+            const cachedData = localStorage.getItem('embarway_cache_data');
+            if (cachedData) {
+                try {
+                    const parsed = JSON.parse(cachedData);
+                    renderDataToUI(parsed); // Ionyeshe data hiyo mara moja
+                } catch (e) {
+                    console.error("Cache parsing error", e);
+                }
+            }
+
+            // 2. VUTA DATA MPYA KIMYAKIMYA TOKA MTANDAO ILI KU-UPDATE LOCALSTORAGE
+            try {
+                const response = await fetch(SCRIPT_URL + "?action=getAllData", { priority: 'high' });
+                if (!response.ok) throw new Error('Network error');
+                const newData = await response.json();
+
+                // Hifadhi data mpya kwenye LocalStorage kwa ajili ya wakati mwingine
+                localStorage.setItem('embarway_cache_data', JSON.stringify(newData));
+
+                // Update UI sasa hivi kimya kimya na data mpya kabisa ya Sheet
+                renderDataToUI(newData);
+
+            } catch (err) {
+                console.error("Zepox Omni-Tech Network Background Error:", err);
+                // Kama hakuna internet na hakuna cache kabisa, andika ujumbe wa error
+                if (!localStorage.getItem('embarway_cache_data')) {
+                    document.querySelectorAll('.loading-text').forEach(el => {
+                        el.innerHTML = "❌ Shida ya mtandao. Tafadhali refresh ukurasa.";
+                        el.style.color = "#ff4d4d";
+                    });
+                }
+            }
+        }
+
+        // Pakia kila kitu mara tu ukurasa unapoanza
         document.addEventListener('DOMContentLoaded', loadAllResults);
     </script>
 </body>
